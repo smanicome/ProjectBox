@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/resources/templates/template.xhtml">
+        <ui:define name="head"></ui:define>
+        <ui:define name="body">
+
+            <div class="h-100 d-flex justify-content-center align-items-center">
+
+                <div class="d-flex flex-column">
+
+                    <div class="text-center mb-2">
+                            <div class="fs-2 fw-bold" >
+                                <h:outputText value="Name" />
+                            </div>
+                        <div class="fs-2 fw-bold" >
+                            <h:outputText value="Id" />
+                        </div>
+                    </div>
+
+                    <div class="container mt-3">
+                            <p:dataTable var="project" value="#{database.project}" lazy="False"> <!--project in database-->
+
+                                <p:column headerText="Name">
+                                    <h:outputText value="#{project.name}" />
+                                </p:column>
+
+                                <p:column headerText="Team">
+                                    <h:outputText value="#{team.name}" /> <!--need to make the names clickable-->
+                                </p:column>
+
+                                <p:column headerText="Date">
+                                    <h:outputText value="#{project.date}" />
+                                </p:column>
+
+                                <p:column headerText="Download">
+                                    <h:outputText value="#{project.content}" />
+                                </p:column>
+
+                            </p:dataTable>
+                    </div>
+
+                    <div class="text-center container mt-3">
+                        <p:button value="Delete account" styleClass="ui-button-outlined ui-button-secondary" />
+                    </div>
+
+                </div>
+
+            </div>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

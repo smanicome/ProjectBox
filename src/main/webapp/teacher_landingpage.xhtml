@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/resources/templates/template.xhtml">
+        <ui:define name="head"></ui:define>
+        <ui:define name="body">
+
+            <div class="h-100 d-flex flex-column justify-content-center align-items-center">
+
+                    <div class="p-3 text-center">
+                            <div class="fs-2 fw-bold">Last Submissions</div>
+                    </div>
+
+                    <div class="container">
+                            <p:dataTable var="project" value="#{database.project}" lazy="False"> <!--project in database-->
+                                
+                                <p:column headerText="Solo">
+                                    <h:outputText value="#{project.name}" />
+                                </p:column>
+
+                                <p:column headerText="Group">
+                                    <h:outputText value="#{project.name}" /> <!--need to make the names clickable-->
+                                </p:column>
+
+                            </p:dataTable>
+                    </div>
+
+
+                    <div class="p-3 text-center">
+                        <div class="fs-2 fw-bold">Past projects</div>
+                    </div>
+
+                    <div class="container">
+                        <p:dataTable var="project" value="#{database.project}" lazy="False"> <!--project in database-->
+
+                            <p:column headerText="Solo">
+                                <h:outputText value="#{project.name}" />
+                            </p:column>
+
+                            <p:column headerText="Group">
+                                <h:outputText value="#{project.name}" /> <!--need to make the names clickable-->
+                            </p:column>
+
+                        </p:dataTable>
+                    </div>
+
+
+            </div>
+
+        </ui:define>
+    </ui:composition>
+
+</html>
