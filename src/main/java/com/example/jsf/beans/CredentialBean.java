@@ -1,15 +1,14 @@
 package com.example.jsf.beans;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 
 @Named("credentialBean")
 @RequestScoped
 public class CredentialBean implements Serializable {
-    private String email;
-    private String password;
+    private String email = "patate";
+    private String password = "patate";
     private boolean remember;
 
     public String getEmail() {
@@ -39,7 +38,5 @@ public class CredentialBean implements Serializable {
     public void display() {
         System.out.println(email);
         System.out.println(password);
-        setEmail("patate");
-        setPassword("patate");
     }
 }
