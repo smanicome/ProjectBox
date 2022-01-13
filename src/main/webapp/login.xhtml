@@ -19,24 +19,24 @@
 
                     <div class="d-flex flex-column">
                         <div class="p-1 d-flex flex-column">
-                            <label for="email1" class="block text-900 font-medium mb-2">Email</label>
-                            <p:inputText id="email1" styleClass="w-100"/>
+                            <label for="email" class="block text-900 font-medium mb-2">Email</label>
+                            <p:inputText id="email" styleClass="w-100" value="#{credentialBean.email}"/>
                         </div>
 
                         <div class="p-1 d-flex flex-column">
                             <label for="password1" class="block text-900 font-medium mb-2">Password</label>
-                            <p:inputText id="password1" type="password" styleClass="w-100"/>
+                            <p:inputText id="password1" type="password" styleClass="w-100" value="#{credentialBean.password}"/>
                         </div>
 
                         <div class="p-1 d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-center">
-                                <p:selectBooleanCheckbox id="rememberme" styleClass="mr-2"/>
+                                <p:selectBooleanCheckbox id="rememberme" styleClass="mr-2" value="#{credentialBean.remember}"/>
                                 <label class="p-2" for="rememberme">Remember me</label>
                             </div>
                             <a role="button" class="p-6 fw-normal text-decoration-none link-primary text-right">Forgot your password?</a>
                         </div>
 
-                        <p:commandButton type="button" value="Sign In" icon="pi pi-user" styleClass="w-full"/>
+                        <p:commandButton type="button" value="Sign up" action="#{credentialBean.display}" icon="pi pi-user" styleClass="w-full"/>
                     </div>
                 </div>
             </div>
