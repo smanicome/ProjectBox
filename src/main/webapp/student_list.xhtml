@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/resources/templates/template.xhtml">
+        <ui:define name="head"></ui:define>
+        <ui:define name="body">
+            <div class="fw-bold fs-3 text-black-50 text-center mb-3">Student list</div>
+            <ul class="list-none p-0 m-0">
+                <ui:repeat value="#{studentListBean.students}" var="student" varStatus="status">
+                    <li class="d-flex m-auto w-75 py-3 px-2 #{status.last ? '' : 'border-bottom'}">
+                        <div class="text-500 w-25 font-medium">#{student.firstname} #{student.lastname}</div>
+                        <div class="text-900 w-50">#{student.email}</div>
+                        <div class="w-25 d-flex justify-content-end">
+                            <p:commandButton type="button" value="Edit" icon="pi pi-pencil"
+                                             styleClass="ui-button-flat" action="#{student.edit}"/>
+                        </div>
+                    </li>
+                </ui:repeat>
+            </ul>
+        </ui:define>
+    </ui:composition>
+</html>

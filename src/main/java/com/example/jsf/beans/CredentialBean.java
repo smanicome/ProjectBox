@@ -2,11 +2,10 @@ package com.example.jsf.beans;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import java.io.Serializable;
 
 @Named("credentialBean")
 @RequestScoped
-public class CredentialBean implements Serializable {
+public class CredentialBean {
     private String email = "patate";
     private String password = "patate";
     private boolean remember;
@@ -35,8 +34,9 @@ public class CredentialBean implements Serializable {
         this.remember = remember;
     }
 
-    public void display() {
+    public String display() {
         System.out.println(email);
         System.out.println(password);
+        return "";
     }
 }

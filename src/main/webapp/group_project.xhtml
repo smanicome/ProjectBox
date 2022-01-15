@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/resources/templates/template.xhtml">
+        <ui:define name="head"></ui:define>
+        <ui:define name="body">
+            <div class="fw-bold fs-3 text-black-50 text-center mb-3">#{groupProjectBean.groupName}</div>
+
+            <div class="d-flex flex-row">
+                <div class="w-50">
+                    <div class="fw-bold fs-4 text-black-50 text-center mb-3">Team</div>
+                    <ul class="list-none p-0 m-0">
+                        <ui:repeat value="#{groupProjectBean.teamMembers}" var="student" varStatus="status">
+                            <li class="d-flex m-auto w-75 py-3 px-2 #{status.last ? '' : 'border-bottom'}">
+                                <div class="text-500 w-25 font-medium">#{student.firstname} #{student.lastname}</div>
+                                <div class="text-500 w-50 font-medium">#{student.email}</div>
+                                <div class="w-25 d-flex justify-content-end">
+                                    <p:commandButton type="button" icon="pi pi-minus"
+                                                     styleClass="ui-button-flat ui-button-danger" action="#{groupProjectBean.removeTeamMember}">
+                                        <f:param name="studentId" value="#{student.id}" />
+                                    </p:commandButton>
+                                </div>
+                            </li>
+                        </ui:repeat>
+                    </ul>
+                    <div class="ui-inputgroup d-flex justify-content-center">
+                        <p:inputText styleClass="w-50" placeholder="Student login or email"/>
+                        <p:commandButton type="button" icon="pi pi-plus"
+                                         styleClass="ui-button-raised ui-button-success" action="#{groupProjectBean.addTeamMember}">
+                            <f:param name="studentId" value="#{newTeamMemberBean.student}" />
+                        </p:commandButton>
+                    </div>
+                </div>
+
+                <div class="w-50">
+                    <div class="fw-bold fs-4 text-black-50 text-center mb-3">Versions</div>
+                    <ul class="list-none p-0 m-0">
+                        <ui:repeat value="#{groupProjectBean.versions}" var="version" varStatus="status">
+                            <li class="d-flex m-auto w-75 py-3 px-2 #{status.last ? '' : 'border-bottom'}">
+                                <div class="text-500 w-75 font-medium">#{version.name}</div>
+                                <div class="w-25 d-flex justify-content-end">
+                                    <p:commandButton type="button" icon="pi pi-download"
+                                                     styleClass="ui-button-flat" action="#{version.download}"/>
+                                </div>
+                            </li>
+                        </ui:repeat>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-4">
+                <p:commandButton type="button" value="Submit"
+                                 styleClass="ui-button-raised ui-button-success" action="#{groupProjectBean.submit}"/>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>
