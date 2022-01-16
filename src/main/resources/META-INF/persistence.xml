@@ -4,9 +4,9 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
     
-    <persistence-unit name="gui">
+    <persistence-unit name="gui" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
+        <jta-data-source>jdbc/MySQLDataSource</jta-data-source>
         <class>com.gui.entities.User</class> 
         
         <properties>

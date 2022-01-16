@@ -8,7 +8,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity @Table( name="user" )
+@Entity
+@Table(name = "USER")
 @NamedQueries({
 	@NamedQuery(name = "User.login", query = "select us from User us where us.email = :email")
 })

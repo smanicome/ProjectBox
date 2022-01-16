@@ -14,7 +14,7 @@ import com.gui.entities.User;
 import java.io.Serializable;
 import java.util.Optional;
 
-@Named("credentialBean")
+@Named
 @RequestScoped
 public class CredentialBean implements Serializable {
 	
@@ -69,7 +69,7 @@ public class CredentialBean implements Serializable {
     		System.out.println("user getted");
     	}
     	else {
-    		System.out.println("error");
+    		System.out.println("Patate");
     	}
     	/*DaoFactory factory = DaoFactory.getInstance();
     	UserDaoInterface userDao = factory.getUserDao();

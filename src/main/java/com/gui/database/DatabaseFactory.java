@@ -1,6 +1,6 @@
 package com.gui.database;
 
-import javax.faces.bean.ApplicationScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 
