@@ -19,4 +19,16 @@
             <to-view-id>/login.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/new_account.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/new_account.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

@@ -17,37 +17,32 @@
                         <a role="button" class="fw-normal text-decoration-none link-primary">Log in</a>
                     </div>
 
-                    <div class="d-flex flex-column">
+                    <h:form>
+                        <div class="d-flex flex-column">
 
-                        <div class="p-1 d-flex flex-column">
-                            <label for="name" class="block text-900 font-medium mb-2">Name</label>
-                            <p:inputText id="name" styleClass="w-100"/>
+                            <div class="p-1 d-flex flex-column">
+                                <label for="name" class="block text-900 font-medium mb-2">Name</label>
+                                <p:inputText id="name" styleClass="w-100" value="#{createUserBean.name}"/>
+                            </div>
+
+                            <div class="p-1 d-flex flex-column">
+                                <label for="surname" class="block text-900 font-medium mb-2">Surname</label>
+                                <p:inputText id="surname" styleClass="w-100" value="#{createUserBean.surname}"/>
+                            </div>
+
+                            <div class="p-1 d-flex flex-column">
+                                <label for="email1" class="block text-900 font-medium mb-2">Email</label>
+                                <p:inputText id="email1" styleClass="w-100" value="#{createUserBean.email}"/>
+                            </div>
+
+                            <div class="p-2 d-flex flex-column">
+                                <label for="Birthday" class="block text-900 font-medium mb-2">Birthday</label>
+                                <p:datePicker id="Birthday" value="#{createUserBean.birthdate}" monthNavigator="true" yearNavigator="true" showWeek="true"/>
+                            </div>
+
+                            <p:commandButton value="Create" icon="pi pi-save" styleClass="w-full" action="#{createUserBean.saveUser}"/>
                         </div>
-
-                        <div class="p-1 d-flex flex-column">
-                            <label for="surname" class="block text-900 font-medium mb-2">Surname</label>
-                            <p:inputText id="surname" styleClass="w-100"/>
-                        </div>
-
-                        <div class="p-1 d-flex flex-column">
-                            <label for="email1" class="block text-900 font-medium mb-2">Email</label>
-                            <p:inputText id="email1" styleClass="w-100"/>
-                        </div>
-
-                        <div class="p-2 d-flex flex-column">
-                            <label for="Birthday" class="block text-900 font-medium mb-2">Birthday</label>
-                            <p:datePicker id="navigator" value="#{calendarView.date2}" monthNavigator="true" yearNavigator="true" showWeek="true"/>
-                        </div>
-
-                        <div class="p-3 d-flex flex-column">
-                            <p:selectOneRadio id="console" value="#{radioView.console}" unselectable="false">
-                                <f:selectItem itemLabel="Teacher" itemValue="Teacher"/>
-                                <f:selectItem itemLabel="Student" itemValue="Student"/>
-                            </p:selectOneRadio>
-                        </div>
-
-                        <p:commandButton type="button" value="Sign In" icon="pi pi-user" styleClass="w-full"/>
-                    </div>
+                    </h:form>
                 </div>
             </div>
         </ui:define>

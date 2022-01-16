@@ -18,15 +18,23 @@ public class User {
 	@Id @GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int id;
 	private String login;
+	private String firstname;
+	private String lastname;
 	private String email;
 
 	public User() {
 		this( "unknown", "unknown");
 	}
-	
+
+	public User( String login, String firstname, String lastname, String email ) {
+		this.setLogin( login );
+		this.setFirstname(firstname);
+		this.setLastname(lastname);
+		this.setEmail( email );
+	}
+
 	public User( String login, String email ) {
-        this.setLogin( login );
-        this.setEmail( email );
+        this(login, null, null, email);
     }
 
 	public int getId() {
@@ -55,5 +63,19 @@ public class User {
 	}
 
 
-	
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 }
