@@ -3,13 +3,14 @@ package com.gui.beans.forms;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.gui.database.DatabaseFactory;
-import com.gui.database.UserORM;
-import com.gui.entities.User;
 
 import java.io.Serializable;
 import java.util.Optional;
@@ -61,8 +62,14 @@ public class CredentialBean implements Serializable {
     }
 
     public String auth() {
-    	System.out.println("get dao :: ");
-    	UserORM orm = db.getUserORM();
+    	System.out.println("get dao :: " );
+    	
+    	EntityManagerFactory em = db.getEmf();
+    	System.out.println("get emf :: " + em );
+    	db.getAllUser();
+    	System.out.println("get success :: ");
+    	/*UserORM orm = db.getUserORM();
+    	System.out.println("getorm");
     	
     	Optional<User> opt = orm.getUser("yisa01@hotmail.fr");
     	if ( opt.isPresent() ) {
@@ -70,7 +77,7 @@ public class CredentialBean implements Serializable {
     	}
     	else {
     		System.out.println("error");
-    	}
+    	}*/
     	/*DaoFactory factory = DaoFactory.getInstance();
     	UserDaoInterface userDao = factory.getUserDao();
     	System.out.println("step1");

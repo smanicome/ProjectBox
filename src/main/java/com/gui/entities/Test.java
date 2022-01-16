@@ -1,33 +1,32 @@
 package com.gui.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity @Table( name="user" )
-@NamedQueries({
-	@NamedQuery(name = "User.login", query = "select us from User us where us.email = :email")
-})
-public class User {
-	
-	@Id @GeneratedValue( strategy = GenerationType.IDENTITY )
+@Entity @Table( name="test" )
+public class Test {
+	@Id @GeneratedValue( strategy = GenerationType.AUTO )
+	@Column(  name="id" )
 	private int id;
+	
+	@Column(  name="login", nullable = false )
 	private String login;
+	@Column(  name="email", nullable = false )
 	private String email;
-
-	public User() {
+	
+	public Test() {
 		this( "unknown", "unknown");
 	}
 	
-	public User( String login, String email ) {
+	public Test( String login, String email ) {
         this.setLogin( login );
         this.setEmail( email );
     }
-
+	
 	public int getId() {
 		return id;
 	}
@@ -52,7 +51,4 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", login=" + login + ", email=" + email + "]";
 	}
-
-
-	
 }

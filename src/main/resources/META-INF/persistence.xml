@@ -4,18 +4,23 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
     
-    <persistence-unit name="gui">
+    <persistence-unit name="gui" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
-        <class>com.gui.entities.User</class> 
+        <class>com.gui.entities.Teacher</class>
+   		<shared-cache-mode>ALL</shared-cache-mode>   
+    	<validation-mode>NONE</validation-mode> 
         
         <properties>
+        	<property name="eclipselink.target-database" value="MySQL4"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gui" />
             <property name="javax.persistence.jdbc.user" value="admin" />
             <property name="javax.persistence.jdbc.password" value="admin" />
             
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <property name="eclipselink.deploy-on-startup" value="true" />
+            <!-- enable this property to see SQL and other logging -->   
+            <property name="eclipselink.logging.level" value="FINE"/>
         </properties>
     </persistence-unit>
 </persistence>

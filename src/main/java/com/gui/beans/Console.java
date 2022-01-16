@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.gui.entities.User;
+import com.gui.entities.Teacher;
 
 public class Console {
 
@@ -17,7 +17,7 @@ public class Console {
             entityManager = entityManagerFactory.createEntityManager();
             
             //par rapport a l'id
-            User user = entityManager.find(User.class, 11);
+            Teacher user = entityManager.find(Teacher.class, "tito");
             System.out.println( user );
         } finally {
             if ( entityManager != null ) entityManager.close();

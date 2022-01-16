@@ -9,26 +9,11 @@
         <body>
             <h1>View Article</h1>
                 
-            <h:form>
-                Identifiant : #{catalogBrowserBean.currentArticle.idArticle} <br/>
-                Description : #{catalogBrowserBean.currentArticle.description} <br/>
-                Marque : #{catalogBrowserBean.currentArticle.brand} <br/>
-                Prix : #{catalogBrowserBean.currentArticle.price} <br/>
-                
+            <h:form enctype="multipart/form-data">
+                <h:inputFile value="#{uploadFileBean.uploadedFile}" require="true" required_message="Please Upload a file" alt="Upload file" />
                 <br/>
-                
-                <h:commandButton value="Précédent" 
-                                 actionListener="#{catalogBrowserBean.processPreviousAction}" /> &#160;
-                <h:commandButton value="Ajouter au panier" 
-                                 actionListener="#{catalogBrowserBean.processAddAction}" /> &#160;
-                <h:commandButton value="Suivant" 
-                                 actionListener="#{catalogBrowserBean.processNextAction}" />
-                
-                <br/>
-                
-                Vous avez #{catalogBrowserBean.basketSize} article(s) dans votre panier.
-                <br/>
-                <a href="summary.xhtml">Voir le contenu du panier</a>
+                <h:commandButton value="save" 
+                                 actionListener="#{uploadFileBean.saveFile}" />
             </h:form>
         
         </body>
