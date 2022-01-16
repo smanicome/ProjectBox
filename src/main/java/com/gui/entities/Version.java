@@ -1,4 +1,4 @@
-package com.example.jsf.beans;
+package com.gui.entities;
 
 public class Version {
     private String name;

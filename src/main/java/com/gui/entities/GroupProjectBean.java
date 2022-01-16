@@ -1,6 +1,5 @@
-package com.example.jsf.beans;
+package com.gui.entities;
 
-import javax.el.MethodExpression;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import java.util.ArrayList;
@@ -11,15 +10,15 @@ import java.util.Objects;
 @RequestScoped
 public class GroupProjectBean {
     private String groupName;
-    private List<Student> teamMembers;
+    private List<User> teamMembers;
     private List<Version> versions;
 
     public GroupProjectBean() {
         groupName = "Test group";
 
         teamMembers = new ArrayList<>();
-        teamMembers.add(new Student("0", "a", "a", "a@a.com"));
-        teamMembers.add(new Student("0", "b", "b", "b@b.com"));
+        teamMembers.add(new User("0", "a", "a", "a@a.com"));
+        teamMembers.add(new User("0", "b", "b", "b@b.com"));
 
         versions = new ArrayList<>();
         versions.add(new Version("0.0.1"));
@@ -31,7 +30,7 @@ public class GroupProjectBean {
         versions.add(new Version("1.0.0"));
     }
 
-    public void addTeamMember(Student newStudent) {
+    public void addTeamMember(User newStudent) {
         Objects.requireNonNull(newStudent);
         teamMembers.add(newStudent);
     }
@@ -40,11 +39,11 @@ public class GroupProjectBean {
         versions.add(version);
     }
 
-    public List<Student> getTeamMembers() {
+    public List<User> getTeamMembers() {
         return teamMembers;
     }
 
-    public void setTeamMembers(List<Student> teamMembers) {
+    public void setTeamMembers(List<User> teamMembers) {
         this.teamMembers = teamMembers;
     }
 
@@ -68,8 +67,8 @@ public class GroupProjectBean {
         return "";
     }
 
-    public String removeTeamMember(String studentId) {
-        teamMembers.removeIf((student) -> student.getId().equals(studentId));
+    public String removeTeamMember(int studentId) {
+        teamMembers.removeIf((student) -> student.getId() == studentId);
         return "";
     }
 }

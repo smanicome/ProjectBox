@@ -1,4 +1,4 @@
-package com.example.jsf.beans;
+package com.gui.entities;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -16,7 +16,7 @@ public class NewTeamMemberBean {
         this.value = value;
     }
 
-    public Student getStudent() {
+    public User getStudent() {
         return null;
     }
 }
