@@ -1,16 +1,19 @@
 package com.gui.beans.forms;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import com.gui.database.DatabaseFactory;
-import com.gui.database.UserORM;
-import com.gui.entities.User;
+import org.apache.commons.codec.digest.DigestUtils;
 
+import com.gui.database.DatabaseFactory;
+import com.gui.database.StudentDaoInterface;
+import com.gui.entities.Student;
 import java.io.Serializable;
 import java.util.Optional;
 
@@ -24,7 +27,7 @@ public class CredentialBean implements Serializable {
     private DatabaseFactory db;
 
 	@Email @NotNull @NotEmpty(message="email is required")
-    private String email = "Patate@email.com";
+    private String email = "";
 	
 	@NotNull @NotEmpty
     private String password = "";
@@ -61,33 +64,19 @@ public class CredentialBean implements Serializable {
     }
 
     public String auth() {
-    	System.out.println("get dao :: ");
-    	UserORM orm = db.getUserORM();
+    	StudentDaoInterface dao = db.getStudentDAO();
     	
-    	Optional<User> opt = orm.getUser("yisa01@hotmail.fr");
+    	Optional<Student> opt = dao.getStudent(email, DigestUtils.sha1Hex(password));
     	if ( opt.isPresent() ) {
-    		System.out.println("user getted");
+    		FacesContext facesContext = FacesContext.getCurrentInstance();
+    		HttpSession session = (HttpSession) facesContext.getExternalContext();
+    		session.setAttribute("user", opt.get());
+    		return "success";
     	}
     	else {
     		System.out.println("Patate");
+    		return "faillure";
     	}
-    	/*DaoFactory factory = DaoFactory.getInstance();
-    	UserDaoInterface userDao = factory.getUserDao();
-    	System.out.println("step1");
-		try {
-			Optional<User> optionalUser = userDao.auth( email, password );
-			if ( optionalUser.isPresent() ) {
-				//session
-	    		return "success";
-	        }
-	        else {
-	        	System.out.println("step 11");
-	            return "failure";
-	        } 
-		} catch (DaoException e) {
-			System.out.println("step 12");
-			return "failure";
-		} 	*/
-    	return "success";
+    	
     }
 }

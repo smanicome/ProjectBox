@@ -72,7 +72,7 @@ public class StudentListBean {
 				System.out.println("cocu");
 			}*/
 			
-			mail.send();
+			//mail.send();
 			
 			System.out.println("content type :: " + csvFile.getContentType());
 			System.out.println("filename :: " + csvFile.getName() );

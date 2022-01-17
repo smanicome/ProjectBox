@@ -20,8 +20,8 @@ public class GroupProject {
         groupName = "Test group";
 
         teamMembers = new ArrayList<>();
-        teamMembers.add(new Student("0", "a", "a", 0, "a@a.com"));
-        teamMembers.add(new Student("1", "b", "b", 1, "b@b.com"));
+        /*teamMembers.add(new Student("0", "a", "a", 0, "a@a.com"));
+        teamMembers.add(new Student("1", "b", "b", 1, "b@b.com"));*/
 
         versions = new ArrayList<>();
         versions.add("0.0.1");

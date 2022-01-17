@@ -8,6 +8,8 @@ import com.gui.tools.StringListConverter;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Objects;
+
 import javax.persistence.*;
 
 /**
@@ -18,21 +20,16 @@ import javax.persistence.*;
 @Table(name = "student")
 @NamedQueries({
     @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s"),
-    @NamedQuery(name = "Student.findByLogin", query = "SELECT s FROM Student s WHERE s.login = :login"),
     @NamedQuery(name = "Student.findByLastname", query = "SELECT s FROM Student s WHERE s.lastname = :lastname"),
     @NamedQuery(name = "Student.findById", query = "SELECT s FROM Student s WHERE s.id = :id"),
-    @NamedQuery(name = "Student.findByPassword", query = "SELECT s FROM Student s WHERE s.password = :password")})
+    @NamedQuery(name = "Student.auth", query = "SELECT s FROM Student s WHERE s.password = :password AND s.email = :email")})
 public class Student implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @Column(name = "id")
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
     private int id;
 
-    @Basic(optional = false)
-    @Column(name = "login")
-    private String login;
     @Basic(optional = false)
     @Column(name = "firstname")
     private String firstname;
@@ -42,6 +39,9 @@ public class Student implements Serializable {
     @Basic(optional = false)
     @Column(name = "passwd")
     private String password;
+    @Basic(optional = false)
+    @Column(name = "email")
+    private String email;
     @JoinTable(name = "students_courses", joinColumns = {
             @JoinColumn(name = "student_id", referencedColumnName = "id")}, inverseJoinColumns = {
             @JoinColumn(name = "course_id", referencedColumnName = "id")})
@@ -58,32 +58,15 @@ public class Student implements Serializable {
     public Student() {
     }
 
-    public Student(String login) {
-        this.login = login;
-    }
-
-    public Student(String login, String firstname, String lastname, int id, String password) {
-        this.login = login;
+    public Student(String firstname, String lastname, String password, String email) {
         this.firstname = firstname;
         this.lastname = lastname;
-        this.id = id;
         this.password = password;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
+        this.email = email;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getPassword() {
@@ -93,7 +76,7 @@ public class Student implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    
     public Collection<Course> getCourses() {
         return courses;
     }
@@ -110,7 +93,15 @@ public class Student implements Serializable {
         this.ips = ips;
     }
 
-    public String getFirstname() {
+    public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getFirstname() {
         return firstname;
     }
 
@@ -134,29 +125,31 @@ public class Student implements Serializable {
         this.teams = teams;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (login != null ? login.hashCode() : 0);
-        return hash;
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(courses, email, firstname, id, ips, lastname, password, teams);
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Student)) {
-            return false;
-        }
-        Student other = (Student) object;
-        if ((this.login == null && other.login != null) || (this.login != null && !this.login.equals(other.login))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		return Objects.equals(courses, other.courses) && Objects.equals(email, other.email)
+				&& Objects.equals(firstname, other.firstname) && id == other.id && Objects.equals(ips, other.ips)
+				&& Objects.equals(lastname, other.lastname) && Objects.equals(password, other.password)
+				&& Objects.equals(teams, other.teams);
+	}
 
-    @Override
-    public String toString() {
-        return "com.gui.entities.Student[ login=" + login + " ]";
-    }
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", password=" + password
+				+ ", email=" + email + ", courses=" + courses + ", teams=" + teams + ", ips=" + ips + "]";
+	}
+    
     
 }

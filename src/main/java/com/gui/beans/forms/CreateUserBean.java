@@ -1,13 +1,16 @@
 package com.gui.beans.forms;
 
-import com.gui.database.DatabaseFactory;
-import com.gui.database.UserORM;
-import com.gui.entities.User;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.time.Instant;
+
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.RandomStringUtils;
+
+import com.gui.database.DatabaseFactory;
+import com.gui.database.StudentDaoInterface;
+import com.gui.entities.Student;
+
 import java.util.Date;
 
 @Named
@@ -16,10 +19,10 @@ public class CreateUserBean {
     @Inject
     private DatabaseFactory db;
 
-    private String name = "Patate";
-    private String surname = "Purée";
-    private String email = "frite@freeteuse.com";
-    private Date birthdate = Date.from(Instant.now());
+    private String name = "";
+    private String surname = "";
+    private String email = "";
+    private Date birthdate;
 
     public String getName() {
         return name;
@@ -54,9 +57,14 @@ public class CreateUserBean {
     }
 
     public String saveUser() {
-        System.out.println("create");
-        UserORM orm = db.getUserORM();
-        orm.create(new User(null, name, surname, "test@aze.fr"));
+        System.out.println("new user");
+        StudentDaoInterface dao = db.getStudentDAO();
+        
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?";
+        String pwd = RandomStringUtils.random( 15, characters );
+        Student student = new Student( name, surname, DigestUtils.sha1Hex(pwd), email );
+        
+        dao.create( student );
         return "success";
     }
 }

@@ -15,10 +15,14 @@ public class DatabaseFactory {
 		return emf;
 	}
 
-	public UserORM getUserORM() {
-		return new UserORM( this );
+	public UserDaoInterface getUserDAO() {
+		return new UserDao( this );
 	}
 	public TeacherDAO getTeacherDAO() {
 		return new TeacherDAO( this );
+	}
+	
+	public StudentDaoInterface getStudentDAO() {
+		return new StudentDao( this );
 	}
 }
