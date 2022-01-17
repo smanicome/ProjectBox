@@ -1,18 +1,17 @@
 package com.gui.database;
 
+import com.gui.entities.User;
+
 import java.util.Objects;
 import java.util.Optional;
 
-import javax.jws.soap.SOAPBinding.Use;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import com.gui.entities.User;
-
 public class UserORM {
 	
-	private EntityManagerFactory emf;
+	private final EntityManagerFactory emf;
 
 	public UserORM( DatabaseFactory databaseFactory ) {
 		Objects.requireNonNull( databaseFactory );

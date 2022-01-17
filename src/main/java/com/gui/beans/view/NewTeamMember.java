@@ -1,11 +1,13 @@
-package com.gui.entities;
+package com.gui.beans.view;
+
+import com.gui.entities.Student;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class NewTeamMemberBean {
+public class NewTeamMember {
     private String value;
 
     public String getValue() {
@@ -16,7 +18,7 @@ public class NewTeamMemberBean {
         this.value = value;
     }
 
-    public User getStudent() {
+    public Student getStudent() {
         return null;
     }
 }

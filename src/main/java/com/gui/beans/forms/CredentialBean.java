@@ -24,7 +24,7 @@ public class CredentialBean implements Serializable {
     private DatabaseFactory db;
 
 	@Email @NotNull @NotEmpty(message="email is required")
-    private String email = "";
+    private String email = "Patate@email.com";
 	
 	@NotNull @NotEmpty
     private String password = "";
