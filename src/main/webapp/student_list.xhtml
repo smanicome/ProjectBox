@@ -7,6 +7,14 @@
     <ui:composition template="/resources/templates/template.xhtml">
         <ui:define name="head"></ui:define>
         <ui:define name="body">
+        	<div class="fw-bold fs-3 text-black-50 text-center mb-3">
+        		<h:form enctype="multipart/form-data">
+	                <h:inputFile value="#{studentListBean.csvFile}" require="true" required_message="Please Upload a file" alt="Upload file" />
+	                <br/>
+	                <h:commandButton value="save" 
+	                                 actionListener="#{studentListBean.uploadCSV}" />
+	            </h:form>
+        	</div>
             <div class="fw-bold fs-3 text-black-50 text-center mb-3">Student list</div>
             <ul class="list-none p-0 m-0">
                 <ui:repeat value="#{studentList.students}" var="student" varStatus="status">

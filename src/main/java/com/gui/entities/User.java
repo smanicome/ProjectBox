@@ -1,5 +1,10 @@
 package com.gui.entities;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +19,8 @@ import javax.persistence.Table;
 	@NamedQuery(name = "User.login", query = "select us from User us where us.email = :email")
 })
 public class User {
+	
+	private static List<String> columns = Stream.of("login", "firstname", "lastname", "email").collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
 	
 	@Id @GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int id;
@@ -39,6 +46,10 @@ public class User {
 
 	public int getId() {
 		return id;
+	}
+	
+	public static List<String> getColumns() {
+		return columns;
 	}
 
 	public String getLogin() {
