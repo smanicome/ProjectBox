@@ -29,7 +29,9 @@ public class Student implements Serializable {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private int id;
-
+    @Basic(optional = false)
+    @Column(name = "login")
+    private String login;
     @Basic(optional = false)
     @Column(name = "firstname")
     private String firstname;
@@ -67,6 +69,14 @@ public class Student implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {

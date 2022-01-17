@@ -68,9 +68,9 @@ public class CredentialBean implements Serializable {
     	
     	Optional<Student> opt = dao.getStudent(email, DigestUtils.sha1Hex(password));
     	if ( opt.isPresent() ) {
-    		FacesContext facesContext = FacesContext.getCurrentInstance();
-    		HttpSession session = (HttpSession) facesContext.getExternalContext();
-    		session.setAttribute("user", opt.get());
+//    		FacesContext facesContext = FacesContext.getCurrentInstance();
+//    		HttpSession session = (HttpSession) facesContext.getExternalContext();
+//    		session.setAttribute("user", opt.get());
     		return "success";
     	}
     	else {

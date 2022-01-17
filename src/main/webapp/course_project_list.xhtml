@@ -7,18 +7,16 @@
 <ui:composition template="/resources/templates/template.xhtml">
     <ui:define name="head"></ui:define>
     <ui:define name="body">
-        <div class="fw-bold fs-3 text-black-50 text-center mb-3">Course list</div>
+        <div class="fw-bold fs-3 text-black-50 text-center mb-3">Project list</div>
 
         <h:form styleClass="d-flex justify-content-center">
             <p:panelGrid columns="3" layout="grid" styleClass="w-75">
-                <c:forEach items="#{teacherCourseList.courses}" var="course">
+                <c:forEach items="#{courseProjectList.projects}" var="project">
                     <p:commandButton
-                            value="#{course.id}&#10;#{course.name}"
+                            value="#{project.name}&#10;#{project.description}"
                             styleClass="w-100 ui-button-raised ui-button-flat ui-button-plain"
                             style="height: 25vh; white-space: pre;"
-                            action="#{teacherCourseList.moveToCourse}"
                     >
-                        <f:setPropertyActionListener target="#{teacherCourseList.selectedCourse}" value="#{course}"/>
                     </p:commandButton>
                 </c:forEach>
             </p:panelGrid>

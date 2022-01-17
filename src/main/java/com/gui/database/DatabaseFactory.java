@@ -25,4 +25,8 @@ public class DatabaseFactory {
 	public StudentDaoInterface getStudentDAO() {
 		return new StudentDao( this );
 	}
+
+	public ProjectDAO getProjectDAO() {
+		return new ProjectDAO( this );
+	}
 }

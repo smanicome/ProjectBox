@@ -62,6 +62,7 @@ public class CreateUserBean {
         
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?";
         String pwd = RandomStringUtils.random( 15, characters );
+        System.out.println(pwd);
         Student student = new Student( name, surname, DigestUtils.sha1Hex(pwd), email );
         
         dao.create( student );
