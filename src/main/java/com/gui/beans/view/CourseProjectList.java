@@ -15,7 +15,10 @@ import java.util.Collection;
 @Named
 @RequestScoped
 public class CourseProjectList implements Serializable {
-    @Inject
+	
+	private static final long serialVersionUID = -9044487822404564248L;
+
+	@Inject
     private DatabaseFactory db;
 
     @Inject
