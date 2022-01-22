@@ -11,9 +11,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "type")
 public class Type {
+	public final static String DEFAULT_TYPE = "NONE";
 	@Id @GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int id;
 	private String name;
+	
+	public Type() {
+		
+	}
+	
+	public Type( String name ) {
+		Objects.requireNonNull( name );
+		this.name = name;
+	}
 	
 	/***************************************************************************
 	 |  Setter Gettter

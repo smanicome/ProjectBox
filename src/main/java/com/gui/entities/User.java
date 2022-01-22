@@ -44,6 +44,11 @@ public class User {
 
 	public User() {
 	}
+	
+	public User( Type type ) {
+		Objects.requireNonNull( type );
+		this.type = type;
+	}
 
 	public User( String login, String firstname, String lastname, String email ) {
 		this.setLogin( login );
@@ -109,6 +114,10 @@ public class User {
 		this.password = DigestUtils.sha1Hex(password);
 	}
 	
+	public String getType() {
+		return type.getName();
+	}
+
 	public boolean isStudent() {
 		return type.getName().equals("Student");
 	}
