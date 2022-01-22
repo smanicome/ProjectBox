@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.gui.entities;
+package com.gui.adelete;
 
+import com.gui.entities.Course;
+import com.gui.entities.Team;
 import com.gui.tools.StringListConverter;
 
 import java.io.Serializable;

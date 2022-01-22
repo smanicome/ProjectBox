@@ -1,4 +1,4 @@
-package com.gui.database;
+package com.gui.adelete;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -7,16 +7,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import com.gui.entities.Student;
+import com.gui.database.DatabaseFactory;
 
 public class StudentDao implements StudentDaoInterface {
 	
-	private final EntityManagerFactory emf;
+	private EntityManagerFactory emf;
 	
 	StudentDao( DatabaseFactory factory ) {
 		Objects.requireNonNull( factory );
 		
-		this.emf = factory.getEmf();
+		//this.emf = factory.getEmf();
 	}
 	
 	private EntityManager getEntityManager() {

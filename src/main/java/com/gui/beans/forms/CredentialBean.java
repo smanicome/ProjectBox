@@ -1,19 +1,19 @@
 package com.gui.beans.forms;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import com.gui.beans.session.UserSession;
 import com.gui.database.DatabaseFactory;
-import com.gui.database.StudentDaoInterface;
-import com.gui.entities.Student;
+import com.gui.database.UserDaoInterface;
+import com.gui.entities.User;
+
 import java.io.Serializable;
 import java.util.Optional;
 
@@ -25,6 +25,9 @@ public class CredentialBean implements Serializable {
 	
 	@Inject
     private DatabaseFactory db;
+	
+	@Inject
+	private UserSession session;
 
 	@Email @NotNull @NotEmpty(message="email is required")
     private String email = "";
@@ -64,14 +67,14 @@ public class CredentialBean implements Serializable {
     }
 
     public String auth() {
-    	StudentDaoInterface dao = db.getStudentDAO();
+    	UserDaoInterface dao = db.getUserDAO();
     	
-    	Optional<Student> opt = dao.getStudent(email, DigestUtils.sha1Hex(password));
-    	if ( opt.isPresent() ) {
-//    		FacesContext facesContext = FacesContext.getCurrentInstance();
-//    		HttpSession session = (HttpSession) facesContext.getExternalContext();
-//    		session.setAttribute("user", opt.get());
-    		return "success";
+    	Optional<User> optionalUser = dao.getUser(email, DigestUtils.sha1Hex(password));
+    	if ( optionalUser.isPresent() ) {
+    		User user = optionalUser.get();
+    		session.setAuth(true);
+    		session.setUser( user );
+    		return "success";		//TODO :: navigation student or teacher using user var
     	}
     	else {
     		System.out.println("Patate");

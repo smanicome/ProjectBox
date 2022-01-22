@@ -1,10 +1,11 @@
 package com.gui.beans.view;
 
-import com.gui.entities.Student;
-
 import javax.el.MethodExpression;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+
+import com.gui.adelete.Student;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

@@ -1,7 +1,7 @@
-package com.gui.database;
+package com.gui.adelete;
 
+import com.gui.database.DatabaseFactory;
 import com.gui.entities.Course;
-import com.gui.entities.Teacher;
 import com.gui.entities.User;
 
 import javax.persistence.EntityManager;
@@ -14,11 +14,11 @@ import java.util.Optional;
 @Transactional
 public class TeacherDAO {
 
-	private final EntityManagerFactory emf;
+	private EntityManagerFactory emf;
 
 	public TeacherDAO(DatabaseFactory databaseFactory ) {
 		Objects.requireNonNull( databaseFactory );
-		this.emf = databaseFactory.getEmf();
+		//this.emf = databaseFactory.getEmf();
 	}
 	
 	private EntityManager getEntityManager() {

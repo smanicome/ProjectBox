@@ -7,9 +7,9 @@ import javax.inject.Named;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 
+import com.gui.adelete.Student;
+import com.gui.adelete.StudentDaoInterface;
 import com.gui.database.DatabaseFactory;
-import com.gui.database.StudentDaoInterface;
-import com.gui.entities.Student;
 
 import java.util.Date;
 
@@ -57,7 +57,7 @@ public class CreateUserBean {
     }
 
     public String saveUser() {
-        System.out.println("new user");
+        /*System.out.println("new user");
         StudentDaoInterface dao = db.getStudentDAO();
         
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~`!@#$%^&*()-_=+[{]}\\|;:\'\",<.>/?";
@@ -66,6 +66,7 @@ public class CreateUserBean {
         Student student = new Student( name, surname, DigestUtils.sha1Hex(pwd), email );
         
         dao.create( student );
-        return "success";
+        return "success";*/
+    	return "success";
     }
 }
