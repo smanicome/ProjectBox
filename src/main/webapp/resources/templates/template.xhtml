@@ -29,11 +29,17 @@ class="h-100">
             
             <div class="position-fixed w-100 collapse navbar-collapse" id="navbarColor01" style="display:#{(menu.show())?'flex;':'none !important;'}">
                 <ul class="navbar-nav mx-auto">
-	                <ui:repeat value="#{ ( userSession.user.isTeacher() ) ? menu.teacherMenu : (userSession.user.isStudent() ? menu.studentMenu : null) }" var="item">
+	                <ui:repeat value="#{ menu.menu }" var="item">
 	                	<li class="nav-item active mx-4">
 		                    <a class="nav-link" href="#{ item.link }">#{ item.name }</a>
 		                </li>
 					</ui:repeat>
+					
+					<li class="nav-item active mx-4">
+						<h:form>
+							<h:commandLink styleClass="nav-link" action="#{ credentialBean.logout() }" value="Log out"></h:commandLink>
+						</h:form>
+	                </li>
                 </ul>
             </div>
         </nav>
