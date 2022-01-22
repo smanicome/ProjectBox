@@ -24,12 +24,13 @@ public class UserDao implements UserDaoInterface{
     }
 
 	@Override
-	public Optional<User> getUser( String email ) {
+	public Optional<User> getUser( String email, String password ) {
 		Objects.requireNonNull( email );
+		Objects.requireNonNull( password );
 		EntityManager em = null;
         try {
         	em = this.getEntityManager();
-        	return em.createNamedQuery("User.login", User.class).setParameter("email", email).getResultStream().findFirst();
+        	return em.createNamedQuery("User.login", User.class).setParameter("email", email).setParameter("password", password).getResultStream().findFirst();
         } finally {
         	if ( em != null ) em.close();
         }
@@ -50,5 +51,4 @@ public class UserDao implements UserDaoInterface{
         	if ( em != null ) em.close();
         }
 	}
-
 }

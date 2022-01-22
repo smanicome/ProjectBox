@@ -1,6 +1,10 @@
 package com.gui.entities;
 
 import javax.persistence.*;
+
+import com.gui.adelete.Student;
+import com.gui.adelete.Teacher;
+
 import java.util.List;
 
 @Entity

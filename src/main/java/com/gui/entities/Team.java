@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.*;
 
+import com.gui.adelete.Student;
+
 /**
  *
  * @author angel

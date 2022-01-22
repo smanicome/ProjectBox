@@ -8,12 +8,11 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>jdbc/MySQLDataSource</jta-data-source>
         <class>com.gui.entities.User</class>
+        <class>com.gui.entities.Type</class>
         <class>com.gui.entities.Course</class>
         <class>com.gui.entities.Project</class>
-        <class>com.gui.entities.Student</class>
-        <class>com.gui.entities.Teacher</class>
         <class>com.gui.entities.Team</class>
-
+        
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gui" />

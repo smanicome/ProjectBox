@@ -23,7 +23,7 @@ public class TeacherCourseList {
 
     @PostConstruct
     public void init() {
-        db.getTeacherDAO().getTeacherById(1).ifPresent(t -> courses = t.getCourses());
+        //TODO :: db.getTeacherDAO().getTeacherById(1).ifPresent(t -> courses = t.getCourses());
     }
 
     public Collection<Course> getCourses() {
