@@ -43,7 +43,7 @@ public class Menu implements Serializable {
 	private Collection<Item> teacherMenu = new ArrayList<>();
 	private Collection<Item> studentMenu = new ArrayList<>();
 	private Collection<Item> menu = null;
-	
+
 	@PostConstruct
 	public void initialize() {
 		
@@ -53,12 +53,12 @@ public class Menu implements Serializable {
 		
 		teacherMenu.add( new Item( "Course List", "course_list.xhtml") );
 		teacherMenu.add( new Item( "Student List", "student_list.xhtml") );
-		
+
 		studentMenu.add( new Item( "Account Settings", "change_account_settings.xhtml") );
 		studentMenu.add( new Item( "Firewall", "account_setting.xhtml") );
 		studentMenu.add( new Item( "My Course List", "course_list.xhtml") );
 	}
-	
+
 	public Collection<Item> getMenu() {
 		return menu;
 	}
