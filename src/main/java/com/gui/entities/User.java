@@ -21,7 +21,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 @Entity
 @Table(name = "user")
 @NamedQueries({
-	@NamedQuery(name = "User.login", query = "select us from User us where us.email = :email AND us.password = :password")
+	@NamedQuery(name = "User.login", query = "select us from User us where us.email = :email AND us.password = :password"),
+	@NamedQuery(name = "User.list", query = "select us from User us")
 })
 public class User {
 	

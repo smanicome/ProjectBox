@@ -1,5 +1,6 @@
 package com.gui.database;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -31,6 +32,17 @@ public class UserDao implements UserDaoInterface{
         try {
         	em = this.getEntityManager();
         	return em.createNamedQuery("User.login", User.class).setParameter("email", email).setParameter("password", password).getResultStream().findFirst();
+        } finally {
+        	if ( em != null ) em.close();
+        }
+	}
+
+	@Override
+	public List<User> getUsers() {
+		EntityManager em = null;
+        try {
+        	em = this.getEntityManager();
+        	return em.createNamedQuery("User.list", User.class).getResultList();
         } finally {
         	if ( em != null ) em.close();
         }
