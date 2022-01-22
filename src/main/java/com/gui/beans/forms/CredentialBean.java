@@ -12,6 +12,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import com.gui.beans.session.UserSession;
 import com.gui.database.DatabaseFactory;
 import com.gui.database.UserDaoInterface;
+import com.gui.entities.Type;
 import com.gui.entities.User;
 
 import java.io.Serializable;
@@ -77,9 +78,14 @@ public class CredentialBean implements Serializable {
     		return user.getType();
     	}
     	else {
-    		System.out.println("Patate");
     		return "failure";
     	}
-    	
+    }
+
+    public String logout() {
+    	System.out.println( "log out" );
+    	session.setAuth( false );
+    	session.setUser( new User( new Type( Type.DEFAULT_TYPE) ) );
+    	return "login";
     }
 }
