@@ -7,6 +7,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import com.gui.entities.Type;
 import com.gui.entities.User;
 
 @Named
@@ -15,7 +16,7 @@ public class UserSession implements Serializable{
 	private static final long serialVersionUID = 1034130298933139208L;
 	
 	private boolean isAuth = false;
-	private User user = new User();
+	private User user = new User( new Type( Type.DEFAULT_TYPE) );
 	
 	/***************************************************************************
 	 |  Getter & Setter

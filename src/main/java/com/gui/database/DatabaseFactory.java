@@ -25,4 +25,8 @@ public class DatabaseFactory {
 	public ProjectDAO getProjectDAO() {
 		return new ProjectDAO( this );
 	}
+	
+	public TeacherDAO getTeacherDAO() {
+		return new TeacherDAO( this );
+	}
 }

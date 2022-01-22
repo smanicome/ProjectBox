@@ -74,7 +74,7 @@ public class CredentialBean implements Serializable {
     		User user = optionalUser.get();
     		session.setAuth(true);
     		session.setUser( user );
-    		return "success";		//TODO :: navigation student or teacher using user var
+    		return user.getType();
     	}
     	else {
     		System.out.println("Patate");
