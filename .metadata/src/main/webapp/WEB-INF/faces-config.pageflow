@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16421204839830" configfile="/ProjectBox/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="122" y="178" id="pf16428640066170" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" outlinks="pf164286402719810 pf164286453316814" inlinks="pf16428640066174" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="new_account.xhtml" x="338" y="178" id="pf16428640066175" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" outlinks="pf16428640066176 pf16428640066174" inlinks="pf16428640066176" path="/new_account.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="teacher_course_list.xhtml" x="122" y="562" id="pf16428640066177" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf16428640066178" path="/teacher_course_list.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="course_project_list.xhtml" x="338" y="562" id="pf16428640066179" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf16428640066178 pf164286453316814" path="/course_project_list.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="122" y="178" id="pf16428640066170" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf164286402719810 pf164286453316814" inlinks="pf16428640066174" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="new_account.xhtml" x="338" y="178" id="pf16428640066175" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf16428640066176 pf16428640066174" inlinks="pf16428640066176" path="/new_account.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="teacher_course_list.xhtml" x="122" y="562" id="pf16428640066177" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf16428640066178" path="/teacher_course_list.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="course_project_list.xhtml" x="338" y="562" id="pf16428640066179" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf16428640066178 pf164286453316814" path="/course_project_list.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="teacher_landingpage.xhtml" id="pf164286402719811" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf164286402719810" path="/teacher_landingpage.xhtml"/>
   <links id="pf16428640066174" target="pf16428640066170" source="pf16428640066175" outcome="success"/>
   <links id="pf16428640066178" target="pf16428640066179" source="pf16428640066177" redirect="true"/>

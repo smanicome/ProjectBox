@@ -5,15 +5,10 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
-/**
- *
- * @author angel
- */
 @Entity
 @Table(name = "project")
 @NamedQueries({
     @NamedQuery(name = "Project.findAll", query = "SELECT p FROM Project p"),
-    @NamedQuery(name = "Project.findByCourse", query = "SELECT p FROM Project p WHERE p.course.id = :courseId"),
     @NamedQuery(name = "Project.findByName", query = "SELECT p FROM Project p WHERE p.name = :name"),
     @NamedQuery(name = "Project.findByDescription", query = "SELECT p FROM Project p WHERE p.description = :description"),
     @NamedQuery(name = "Project.findByDeadline", query = "SELECT p FROM Project p WHERE p.deadline = :deadline")})
@@ -35,8 +30,8 @@ public class Project implements Serializable {
     @JoinColumn(name = "course_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Course course;
-    @OneToMany
-    private List<Team> teams;
+    /*@OneToMany
+    private List<Team> teams;*/
 
     public Project() {
     }
@@ -74,13 +69,14 @@ public class Project implements Serializable {
         this.deadline = deadline;
     }
 
-    public Course getCourse() {
+    /*public Course getCourse() {
         return course;
     }
 
     public void setCourse(Course course) {
         this.course = course;
-    }
+    }*/
+    
     @Override
     public int hashCode() {
         int hash = 0;

@@ -1,5 +1,6 @@
 package com.gui.entities;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -11,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -38,6 +41,12 @@ public class User {
 	@JoinColumn(name = "id_type", referencedColumnName = "id")
     @ManyToOne(optional = false)
 	private Type type;
+	
+	@JoinTable(name = "courses_users", joinColumns = {
+            @JoinColumn(name = "user_id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "course_id", referencedColumnName = "id")})
+    @ManyToMany
+    private Collection<Course> courses;
 	
 	/***************************************************************************
 	 |  Constructor
@@ -118,6 +127,14 @@ public class User {
 	public String getType() {
 		return type.getName();
 	}
+	
+	public Collection<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Collection<Course> courses) {
+        this.courses = courses;
+    }
 
 	public boolean isStudent() {
 		return type.getName().equals("Student");

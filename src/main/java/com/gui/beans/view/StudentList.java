@@ -29,6 +29,10 @@ public class StudentList implements Serializable {
     	List<User> list = userDao.getUsers().stream().filter( x -> x.isStudent() ).collect( Collectors.toList() );
     	students = new ArrayList<User>(list);
 	}
+	
+	/***************************************************************************
+	 |  Getter & Setter
+	***************************************************************************/
 
     public ArrayList<User> getStudents() {
         return students;

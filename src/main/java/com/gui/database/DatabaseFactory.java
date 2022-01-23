@@ -6,8 +6,6 @@ import javax.persistence.PersistenceUnit;
 
 import com.gui.adelete.StudentDao;
 import com.gui.adelete.StudentDaoInterface;
-import com.gui.adelete.Teacher;
-import com.gui.adelete.TeacherDAO;
 
 @ApplicationScoped
 public class DatabaseFactory {
@@ -24,9 +22,5 @@ public class DatabaseFactory {
 
 	public ProjectDAO getProjectDAO() {
 		return new ProjectDAO( this );
-	}
-	
-	public TeacherDAO getTeacherDAO() {
-		return new TeacherDAO( this );
 	}
 }
