@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/resources/templates/template.xhtml">
+        <ui:define name="head"></ui:define>
+        <ui:define name="body">
+            <div class="h-100 d-flex justify-content-center align-items-center">
+                <div class="w-25 p-2 card shadow rounded">
+                    <div class="text-center mb-2">
+                        <p:graphicImage url="/resources/assets/image/hyper.svg" alt="Image"
+                                        height="50" styleClass="mb-3"/>
+                        <div class="fs-2 fw-bold">Change account settings</div>
+                    </div>
+					<p:messages showDetail="false" autoUpdate="true" />
+					<h:form>
+						<div class="d-flex flex-column">
+
+                            <div class="p-3 d-flex flex-column">
+                                <label for="password1" class="block text-900 font-medium mb-2">Name</label>
+                                <p:inputText id="name1" type="text" styleClass="w-100" value="#{createUserBean.name}" required="true"/>
+                            </div>
+
+
+                            <div class="p-3 d-flex flex-column">
+                                <label for="password1" class="block text-900 font-medium mb-2">Surname</label>
+                                <p:inputText id="Lastname1" type="text" styleClass="w-100" value="#{createUserBean.surname}" required="true"/>
+                            </div>
+	
+	                        <div class="p-3 d-flex flex-column">
+	                            <label for="password1" class="block text-900 font-medium mb-2">Password</label>
+	                            <p:inputText id="password1" type="password" styleClass="w-100" value="#{credentialBean.password}" required="true"/>
+	                        </div>
+
+	                        <p:commandButton value="Update settings" action="#{CreateUserBean.setPassword}" icon="pi pi-user" styleClass="w-full"/>
+	                    </div>
+					</h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>
