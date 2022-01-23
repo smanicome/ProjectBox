@@ -4,20 +4,26 @@ import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.http.Part;
 
 import com.gui.database.DatabaseFactory;
+import com.gui.database.UserDao;
+import com.gui.database.UserDaoInterface;
 import com.gui.entities.User;
+import com.gui.services.CSV;
 import com.gui.services.GmailEmailWorking;
 import com.gui.services.Mail;
+import com.gui.services.MailException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Properties;
 
 @Named
 @RequestScoped
@@ -62,6 +68,7 @@ public class StudentListBean {
 	
 	public void uploadCSV() {
 		System.out.println("start save");
+
 		if ( csvFile != null ) {
 			//check size
 			//check extension
@@ -79,21 +86,35 @@ public class StudentListBean {
 			System.out.println("submitted file :: " + csvFile.getSubmittedFileName() );
 			System.out.println("size:: " + csvFile.getSize());
 			
-			/*try {
+			try {
 				CSV csv = new CSV( csvFile.getInputStream(), "," );
 				ArrayList<User> users = csv.getUserList();
 				for( User us : users ) {
-					UserORM orm = db.getUserORM();
-					orm.create( us );
+					UserDaoInterface dao = db.getUserDAO();
+					dao.create( us );
 					System.out.println( "send email" );
-					Mail.sendMail( us.getEmail(), "You account has been created", "Welcome " + us.getFirstname() + " " + us.getLastname() + ",\nYou account has been successfully created.\nYour password is: "+ "test" );
+					try {
+						InitialContext ic = new InitialContext();
+						String snName = "mail/MailService";
+						Session session = (Session)ic.lookup(snName);
+
+						Message msg = new MimeMessage(session);
+						msg.setSubject("Test mail");
+						msg.setSentDate(new Date());
+						msg.setFrom();
+						msg.setRecipients(Message.RecipientType.TO,
+								InternetAddress.parse(us.getEmail(), false));
+						msg.setText("Some text");
+
+						Transport.send(msg);
+					} catch (NamingException | MessagingException e) {
+						e.printStackTrace();
+					}
 				}
 			} catch (IOException e) {
 				// TODO print message
-			} catch (MailException e) {
-				System.out.println( e.getMessage() );
-				// TODO print message
-			}*/
+			}
+
 		}
 	}
 }

@@ -75,7 +75,7 @@ public class CredentialBean implements Serializable {
     	}
     	else {
     		System.out.println("Patate");
-    		return "faillure";
+    		return "failure";
     	}
     	
     }
