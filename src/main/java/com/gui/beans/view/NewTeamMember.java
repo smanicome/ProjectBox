@@ -1,9 +1,9 @@
 package com.gui.beans.view;
 
-import com.gui.entities.Student;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+
+import com.gui.adelete.Student;
 
 @Named
 @RequestScoped

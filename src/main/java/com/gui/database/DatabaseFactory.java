@@ -1,10 +1,11 @@
 package com.gui.database;
 
-import com.gui.entities.Teacher;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+
+import com.gui.adelete.StudentDao;
+import com.gui.adelete.StudentDaoInterface;
 
 @ApplicationScoped
 public class DatabaseFactory {
@@ -17,13 +18,6 @@ public class DatabaseFactory {
 
 	public UserDaoInterface getUserDAO() {
 		return new UserDao( this );
-	}
-	public TeacherDAO getTeacherDAO() {
-		return new TeacherDAO( this );
-	}
-	
-	public StudentDaoInterface getStudentDAO() {
-		return new StudentDao( this );
 	}
 
 	public ProjectDAO getProjectDAO() {

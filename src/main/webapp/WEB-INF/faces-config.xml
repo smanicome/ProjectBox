@@ -7,20 +7,12 @@
 	<navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/new_account.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <from-view-id>/login.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>failure</from-outcome>
-            <to-view-id>/login.xhtml</to-view-id>
+            <from-outcome>Teacher</from-outcome>
+            <to-view-id>/teacher_landingpage.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>new</from-outcome>
-            <to-view-id>/new_account.xhtml</to-view-id>
+            <from-outcome>Student</from-outcome>
+            <to-view-id>/course_project_list.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 
@@ -43,7 +35,7 @@
             <redirect include-view-params="true">
                 <redirect-param>
                     <name>course</name>
-                    <value>#{teacherCourseList.selectedCourse.id}</value>
+                    <value>#{teacherCourseList.selectedCourse.code}</value>
                 </redirect-param>
             </redirect>
         </navigation-case>

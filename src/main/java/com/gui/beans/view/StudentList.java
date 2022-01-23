@@ -1,28 +1,44 @@
 package com.gui.beans.view;
 
-import com.gui.entities.Student;
-
-import javax.enterprise.context.RequestScoped;
+import javax.annotation.PostConstruct;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+
+import com.gui.database.DatabaseFactory;
+import com.gui.database.UserDaoInterface;
+import com.gui.entities.User;
+
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Named
-@RequestScoped
-public class StudentList {
-    private ArrayList<Student> students = new ArrayList<>();
+@ViewScoped
+public class StudentList implements Serializable {
 
-    public StudentList() {
-        /*students.add(new Student("0", "a", "a", 0, "a@a.com"));
-        students.add(new Student("1", "b", "b", 1, "b@b.com"));
-        students.add(new Student("2", "c", "c", 2, "c@c.com"));
-        students.add(new Student("3", "d", "d", 3, "d@d.com"));*/
-    }
+	private static final long serialVersionUID = 6246932190759698681L;
+	@Inject
+	private DatabaseFactory db;
+	private ArrayList<User> students = new ArrayList<>();
+	
+	@PostConstruct
+	public void initialize() {
+    	UserDaoInterface userDao = db.getUserDAO();
+    	List<User> list = userDao.getUsers().stream().filter( x -> x.isStudent() ).collect( Collectors.toList() );
+    	students = new ArrayList<User>(list);
+	}
+	
+	/***************************************************************************
+	 |  Getter & Setter
+	***************************************************************************/
 
-    public ArrayList<Student> getStudents() {
+    public ArrayList<User> getStudents() {
         return students;
     }
 
-    public void setStudents(ArrayList<Student> students) {
+    public void setStudents(ArrayList<User> students) {
         this.students = students;
     }
 }
