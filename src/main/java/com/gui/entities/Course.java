@@ -1,11 +1,8 @@
 package com.gui.entities;
 
-import javax.persistence.*;
-
-import com.gui.adelete.Student;
-import com.gui.adelete.Teacher;
-
 import java.util.List;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "course")
@@ -13,17 +10,19 @@ import java.util.List;
         @NamedQuery(name = "Course.id", query = "select c from Course c where c.id = :id")
 })
 public class Course {
-    @Id
-    @Column(name = "id", nullable = false)
+	@Id @GeneratedValue( strategy = GenerationType.IDENTITY )
     private String id;
     @Column(name = "name", nullable = false)
     private String name;
-    @OneToMany
+    @Column(name = "code", nullable = false)
+    private String code;
+    
+    @OneToMany( mappedBy = "course" )
     private List<Project> projects;
-    @ManyToMany
+    /*@ManyToMany
     private List<Student> students;
     @ManyToMany
-    private List<Teacher> teachers;
+    private List<Teacher> teachers;*/
 
     public List<Project> getProjects() {
         return projects;
@@ -33,20 +32,16 @@ public class Course {
         this.projects = projects;
     }
 
-    public List<Student> getStudents() {
+    /*public List<Student> getStudents() {
         return students;
     }
 
     public void setStudents(List<Student> students) {
         this.students = students;
-    }
+    }*/
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -56,4 +51,14 @@ public class Course {
     public void setName(String name) {
         this.name = name;
     }
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+    
+    
 }

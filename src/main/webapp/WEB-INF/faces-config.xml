@@ -35,7 +35,7 @@
             <redirect include-view-params="true">
                 <redirect-param>
                     <name>course</name>
-                    <value>#{teacherCourseList.selectedCourse.id}</value>
+                    <value>#{teacherCourseList.selectedCourse.code}</value>
                 </redirect-param>
             </redirect>
         </navigation-case>
