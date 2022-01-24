@@ -1,17 +1,10 @@
 package com.gui.beans;
 
-import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.http.Part;
-
-import org.apache.commons.lang3.RandomStringUtils;
 
 import com.gui.database.DatabaseFactory;
 import com.gui.database.UserDaoInterface;
@@ -22,7 +15,6 @@ import com.gui.services.PasswordGenerator;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 @Named
 @RequestScoped
@@ -68,14 +60,6 @@ public class StudentListBean {
 			//check size
 			//check extension
 			
-			/*try {
-				Mail.test();
-			} catch (MessagingException e) {
-				System.out.println("cocu");
-			}*/
-			
-			//mail.send();
-			
 			System.out.println("content type :: " + csvFile.getContentType());
 			System.out.println("filename :: " + csvFile.getName() );
 			System.out.println("submitted file :: " + csvFile.getSubmittedFileName() );
@@ -88,10 +72,7 @@ public class StudentListBean {
 				for( User us : users ) {
 			        String pwd = PasswordGenerator.generate( 15 );
 			        us.setPassword( pwd );
-			        System.out.println(pwd);
-			        System.out.println("create row db");
 					dao.create( us );
-					System.out.println( "send email" );
 					try {
 						mail.send("Account successfully created", us.getEmail(), "your pwd :: " + pwd);
 					} catch (MessagingException e) {

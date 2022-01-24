@@ -1,13 +1,10 @@
 package com.gui.beans.forms;
 
-import com.gui.beans.session.UserSession;
 import com.gui.beans.view.SelectedCourse;
 import com.gui.database.DatabaseFactory;
-import com.gui.entities.Course;
 import com.gui.entities.Project;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.annotation.ManagedProperty;
 import javax.inject.Inject;
 import javax.inject.Named;
 

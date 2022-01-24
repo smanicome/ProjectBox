@@ -1,6 +1,5 @@
 package com.gui.beans.view;
 
-import javax.el.MethodExpression;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 

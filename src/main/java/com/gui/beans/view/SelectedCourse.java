@@ -9,7 +9,9 @@ import java.io.Serializable;
 @Named
 @SessionScoped
 public class SelectedCourse implements Serializable {
-    private Course course;
+
+	private static final long serialVersionUID = -1729744431751916974L;
+	private Course course;
 
     public Course getCourse() {
         return course;

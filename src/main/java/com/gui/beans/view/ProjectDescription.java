@@ -7,7 +7,6 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.gui.beans.session.UserSession;
 import com.gui.entities.Project;
 
 @Named
@@ -20,9 +19,6 @@ public class ProjectDescription implements Serializable{
 	 @ManagedProperty(value="#{param.project}")
 	 private int projectCode;
 	 private Project project;
-	 
-	 @Inject
-	 private UserSession session;
 	 
 	 @PostConstruct
 	 public void load() {

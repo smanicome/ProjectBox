@@ -39,7 +39,7 @@ public class Type {
 			this.name = TEACHER_TYPE;
 			break;
 		case STUDENT:
-			this.id = 1;
+			this.id = 2;
 			this.name = STUDENT_TYPE;
 			break;
 		default:
