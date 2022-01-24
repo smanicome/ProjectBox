@@ -4,11 +4,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.RandomStringUtils;
-
-import com.gui.adelete.Student;
-import com.gui.adelete.StudentDaoInterface;
 import com.gui.database.DatabaseFactory;
 
 import java.util.Date;

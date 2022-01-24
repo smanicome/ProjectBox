@@ -51,7 +51,7 @@ public class Menu implements Serializable {
 		teacherMenu.add( new Item( "Account Settings", "account_setting.xhtml") );
 		teacherMenu.add( new Item( "Last Submit", "account_setting.xhtml") );
 		
-		teacherMenu.add( new Item( "Course List", "teacher_course_list.xhtml") );
+		teacherMenu.add( new Item( "Course List", "course_list.xhtml") );
 		teacherMenu.add( new Item( "Student List", "student_list.xhtml") );
 		
 		studentMenu.add( new Item( "Account Settings", "account_setting.xhtml") );

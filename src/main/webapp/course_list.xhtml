@@ -12,14 +12,14 @@
         <h:form styleClass="d-flex flex-column align-items-center">
             <p:commandButton styleClass="ui-button-success w-25 mb-4" icon="pi pi-plus" value="Create a course" action="create_course"/>
             <p:panelGrid columns="3" layout="grid" styleClass="w-75">
-                <c:forEach items="#{teacherCourseList.courses}" var="course">
+                <c:forEach items="#{courseList.courses}" var="course">
                     <p:commandButton
                             value="#{course.code}&#10;#{course.name}"
                             styleClass="w-100 ui-button-raised ui-button-flat ui-button-plain"
                             style="height: 25vh; white-space: pre;"
-                            action="#{teacherCourseList.moveToCourse}"
+                            action="#{courseList.moveToProject}"
                     >
-                        <f:setPropertyActionListener target="#{teacherCourseList.selectedCourse}" value="#{course}"/>
+                        <f:setPropertyActionListener target="#{courseList.selectedCourse}" value="#{course}"/>
                     </p:commandButton>
                 </c:forEach>
             </p:panelGrid>

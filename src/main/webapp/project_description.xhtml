@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="container mt-3">
-                            <p:dataTable var="project" value="#{database.project}" lazy="False"> <!--project in database-->
+                            <p:dataTable var="project" value="#{projectDescription.project}" lazy="False"> <!--project in database-->
 
                                 <p:column headerText="Date">
                                     <h:outputText value="#{project.date}" />

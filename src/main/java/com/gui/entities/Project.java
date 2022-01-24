@@ -2,7 +2,6 @@ package com.gui.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -34,6 +33,10 @@ public class Project implements Serializable {
     /*@OneToMany
     private List<Team> teams;*/
 
+    /***************************************************************************
+	 |  Constructor
+	***************************************************************************/
+
     public Project() {
     }
 
@@ -46,7 +49,15 @@ public class Project implements Serializable {
         this.description = description;
     }
 
-    public String getName() {
+    /***************************************************************************
+	 |  Getter & Setter
+	***************************************************************************/
+
+    public int getId() {
+		return id;
+	}
+
+	public String getName() {
         return name;
     }
 
@@ -84,7 +95,11 @@ public class Project implements Serializable {
 
     public void setCourse(Course course) {
         this.course = course;
-    }*/
+    }
+
+    /***************************************************************************
+	 |  Inherited
+	***************************************************************************/
     
     @Override
     public int hashCode() {
