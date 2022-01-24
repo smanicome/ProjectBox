@@ -50,9 +50,9 @@ public class Menu implements Serializable {
 		//TODO :: replace with link
 		teacherMenu.add( new Item( "Account Settings", "change_account_settings.xhtml") );
 		teacherMenu.add( new Item( "Last Submit", "account_setting.xhtml") );
-		
 		teacherMenu.add( new Item( "Course List", "course_list.xhtml") );
 		teacherMenu.add( new Item( "Student List", "student_list.xhtml") );
+
 
 		studentMenu.add( new Item( "Account Settings", "change_account_settings.xhtml") );
 		studentMenu.add( new Item( "Firewall", "account_setting.xhtml") );

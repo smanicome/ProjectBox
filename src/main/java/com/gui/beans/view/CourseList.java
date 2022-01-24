@@ -46,7 +46,7 @@ public class CourseList implements Serializable {
 	 |  Listener & Action
 	***************************************************************************/
 
-    public String moveToCourse() {
+    public String moveToProject() {
         return "project_list";
     }
 }

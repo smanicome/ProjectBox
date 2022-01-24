@@ -44,14 +44,17 @@ public class CreateProjectBean implements Serializable {
     }
 
     public Date getDeadline() {
+    	System.out.println( "get deadline :: " + deadline );
         return deadline;
     }
 
     public void setDeadline(Date deadline) {
+    	System.out.println( "get deadline :: " + deadline );
         this.deadline = deadline;
     }
 
     public void save() {
+    	System.out.println( "save projejct" );
         Project p = new Project();
         p.setName(name);
         p.setDescription(description);

@@ -81,7 +81,7 @@ public class CredentialBean implements Serializable {
     		return "failure";
     	}
     }
-
+    
     public String logout() {
     	System.out.println( "log out" );
     	session.setAuth( false );

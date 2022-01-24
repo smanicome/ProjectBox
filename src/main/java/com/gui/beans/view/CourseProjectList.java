@@ -25,11 +25,13 @@ public class CourseProjectList implements Serializable {
     private SelectedCourse selectedCourse;
 
     private Collection<Project> projects;
+    private Project selectedProject;
 
     @PostConstruct
     public void load() {
-        Collection<Course> list = session.getUser().getCourses();
-        Optional<Course> opt = list.stream().filter( x -> x.getCode().equals(selectedCourse.getCourse().getCode()) ).findFirst();
+    	System.out.println( "loado" );
+        Collection<Course> courseList = session.getUser().getCourses();
+        Optional<Course> opt = courseList.stream().filter( x -> x.getCode().equals(selectedCourse.getCourse().getCode()) ).findFirst();
         opt.ifPresent(x -> projects = x.getProjects());
     }
 
@@ -40,4 +42,20 @@ public class CourseProjectList implements Serializable {
     public void setProjects(Collection<Project> projects) {
         this.projects = projects;
     }
+
+	public Project getSelectedProject() {
+		return selectedProject;
+	}
+
+	public void setSelectedProject(Project selectedProject) {
+		this.selectedProject = selectedProject;
+	}
+	
+	/***************************************************************************
+	 |  Listener & Action
+	***************************************************************************/
+
+   public String moveToProjectInfo() {
+       return "project_info";
+   }
 }
