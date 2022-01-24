@@ -31,8 +31,6 @@
 								<label for="deadline" class="block text-900 font-medium mb-2">Deadline</label>
 								<p:datePicker inline="true" id="deadline" mindate="#{calendarView.minDate}" value="#{createProjectBean.deadline}" monthNavigator="true" yearNavigator="true" showWeek="true" showTime="true"/>
 							</div>
-
-							<h:inputHidden id="hidden2" value="#{createProjectBean.courseCode}" />
 	                        <p:commandButton value="Save" action="#{createProjectBean.save}" icon="pi pi-user" styleClass="mt-4 w-full"/>
 	                    </div>
 					</h:form>

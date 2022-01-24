@@ -11,7 +11,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "type")
 public class Type {
-	public final static String DEFAULT_TYPE = "NONE";
+	public final static String DEFAULT_TYPE 	= "NONE";
+	private final static String TEACHER_TYPE 	= "Teacher";
+	private final static String STUDENT_TYPE 	= "Student";
+	public enum typeEnum{
+		TEACHER, STUDENT
+	}
+	
 	@Id @GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int id;
 	private String name;
@@ -23,6 +29,23 @@ public class Type {
 	public Type( String name ) {
 		Objects.requireNonNull( name );
 		this.name = name;
+	}
+	
+	public Type( typeEnum type ) {
+		Objects.requireNonNull( type );
+		switch (type) {
+		case TEACHER:
+			this.id = 1;
+			this.name = TEACHER_TYPE;
+			break;
+		case STUDENT:
+			this.id = 1;
+			this.name = STUDENT_TYPE;
+			break;
+		default:
+			new IllegalArgumentException();
+			break;
+		}
 	}
 	
 	/***************************************************************************

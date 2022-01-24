@@ -11,19 +11,18 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.http.Part;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 import com.gui.database.DatabaseFactory;
-import com.gui.database.UserDao;
 import com.gui.database.UserDaoInterface;
 import com.gui.entities.User;
 import com.gui.services.CSV;
-import com.gui.services.GmailEmailWorking;
-import com.gui.services.Mail;
-import com.gui.services.MailException;
+import com.gui.services.MailService;
+import com.gui.services.PasswordGenerator;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Properties;
 
 @Named
 @RequestScoped
@@ -33,15 +32,11 @@ public class StudentListBean {
     private DatabaseFactory db;
 	
 	@Inject
-	private GmailEmailWorking mail;
+	private MailService mail;
 	
     private ArrayList<User> students = new ArrayList<>();
 
 	public StudentListBean() {
-        students.add(new User("0", "a", "a", "a@a.com"));
-        students.add(new User("1", "b", "b", "b@b.com"));
-        students.add(new User("2", "c", "c", "c@c.com"));
-        students.add(new User("3", "d", "d", "d@d.com"));
     }
 
     public ArrayList<User> getStudents() {
@@ -89,25 +84,18 @@ public class StudentListBean {
 			try {
 				CSV csv = new CSV( csvFile.getInputStream(), "," );
 				ArrayList<User> users = csv.getUserList();
+				UserDaoInterface dao = db.getUserDAO();
 				for( User us : users ) {
-					UserDaoInterface dao = db.getUserDAO();
+			        String pwd = PasswordGenerator.generate( 15 );
+			        us.setPassword( pwd );
+			        System.out.println(pwd);
+			        System.out.println("create row db");
 					dao.create( us );
 					System.out.println( "send email" );
 					try {
-						InitialContext ic = new InitialContext();
-						String snName = "mail/MailService";
-						Session session = (Session)ic.lookup(snName);
-
-						Message msg = new MimeMessage(session);
-						msg.setSubject("Test mail");
-						msg.setSentDate(new Date());
-						msg.setFrom();
-						msg.setRecipients(Message.RecipientType.TO,
-								InternetAddress.parse(us.getEmail(), false));
-						msg.setText("Some text");
-
-						Transport.send(msg);
-					} catch (NamingException | MessagingException e) {
+						mail.send("Account successfully created", us.getEmail(), "your pwd :: " + pwd);
+					} catch (MessagingException e) {
+						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}

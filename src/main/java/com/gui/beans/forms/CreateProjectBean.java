@@ -36,44 +36,28 @@ public class CreateProjectBean implements Serializable {
 	 }
 
     public String getDescription() {
-    	System.out.println( "get description" );
         return description;
     }
 
     public void setDescription(String description) {
-    	System.out.println( "set description" );
         this.description = description;
     }
 
     public String getName() {
-    	System.out.println( "get name" );
         return name;
     }
 
     public void setName(String name) {
-    	System.out.println( "set name" );
         this.name = name;
     }
 
     public Date getDeadline() {
-    	System.out.println( "get deadline" );
         return deadline;
     }
 
     public void setDeadline(Date deadline) {
-    	System.out.println( "set deadline" );
         this.deadline = deadline;
     }
-
-    public String getCourseCode() {
-    	System.out.println( "get code" );
-        return courseCode;
-    }
-
-    public void setCourseCode(String courseCode) {
-    	System.out.println( "set code" );
-		this.courseCode = courseCode;
-	}
 
 	public String save() {
 		// TODO :: optional de course, date in db, remove hidden input to something else

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.StringTokenizer;
 
+import com.gui.entities.Type;
 import com.gui.entities.User;
 
 public class CSV{
@@ -52,7 +53,7 @@ public class CSV{
 				firstLine = false;
 			}
 			else {
-				User user = new User( fields.get(0), fields.get(1), fields.get(2), fields.get(3) );
+				User user = new User( fields.get(0), fields.get(1), fields.get(2), fields.get(3), new Type( Type.typeEnum.STUDENT ) );
 				users.add( user );
 			}
 			

@@ -60,11 +60,12 @@ public class User {
 		this.type = type;
 	}
 
-	public User( String login, String firstname, String lastname, String email ) {
+	public User( String login, String firstname, String lastname, String email, Type type ) {
 		this.setLogin( login );
 		this.setFirstname(firstname);
 		this.setLastname(lastname);
 		this.setEmail( email );
+		this.setType(type);
 	}
 	
 	/***************************************************************************
@@ -128,6 +129,10 @@ public class User {
 		return type.getName();
 	}
 	
+	public void setType(Type type) {
+		this.type = type;
+	}
+
 	public Collection<Course> getCourses() {
         return courses;
     }
