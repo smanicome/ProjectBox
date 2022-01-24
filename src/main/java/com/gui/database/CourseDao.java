@@ -1,8 +1,6 @@
 package com.gui.database;
 
 import com.gui.entities.Course;
-import com.gui.entities.User;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -10,11 +8,11 @@ import javax.transaction.Transactional;
 import java.util.Objects;
 
 @Transactional
-public class CourseDao {
+class CourseDao implements CourseDaoInterface {
 
 	private final EntityManagerFactory emf;
 
-	public CourseDao(DatabaseFactory databaseFactory ) {
+	CourseDao(DatabaseFactory databaseFactory ) {
 		Objects.requireNonNull( databaseFactory );
 		this.emf = databaseFactory.getEmf();
 	}
@@ -23,6 +21,7 @@ public class CourseDao {
         return emf.createEntityManager();
     }
 	
+	@Override
 	public void create( Course course ) {
 		Objects.requireNonNull( course );
 		
@@ -38,7 +37,7 @@ public class CourseDao {
         }
 	}
 	
-	public Course getCourseByCode(String courseCode ) {
+	public Course getCourseByCode(String courseCode) {
 		EntityManager em = null;
         try {
         	em = this.getEntityManager();

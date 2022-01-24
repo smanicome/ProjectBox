@@ -1,6 +1,7 @@
 package com.gui.beans.forms;
 
 import com.gui.beans.session.UserSession;
+import com.gui.database.CourseDaoInterface;
 import com.gui.database.DatabaseFactory;
 import com.gui.entities.Course;
 
@@ -36,10 +37,8 @@ public class CreateCourseBean {
     }
 
     public void save() {
-        Course c = new Course();
-        c.setCode(code);
-        c.setName(name);
-        c.addUser(session.getUser());
-        db.getCourseDAO().create(c);
+        Course c = new Course( code, name, session.getUser() );
+        CourseDaoInterface dao = db.getCourseDAO();
+        dao.create( c );
     }
 }

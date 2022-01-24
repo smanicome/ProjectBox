@@ -2,6 +2,7 @@ package com.gui.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.*;
 
@@ -20,8 +21,32 @@ public class Course {
 
     @OneToMany( mappedBy = "course" )
     private List<Project> projects;
+    @JoinTable(name = "courses_users", joinColumns = {
+    	@JoinColumn(name = "course_id", referencedColumnName = "id")}, inverseJoinColumns = {
+        @JoinColumn(name = "user_id", referencedColumnName = "id")})
     @ManyToMany
     private List<User> users = new ArrayList<>();
+    
+    /***************************************************************************
+	 |  Constructor
+	***************************************************************************/
+    
+    public Course() {
+    }
+    
+    public Course( String code, String name, User user ) {
+    	Objects.requireNonNull( code );
+    	Objects.requireNonNull( name );
+    	Objects.requireNonNull( user );
+    	
+    	this.code = code;
+    	this.name = name;
+    	this.users.add( user );
+    }
+    
+    /***************************************************************************
+	 |  Getter & Setter
+	***************************************************************************/
 
     public List<Project> getProjects() {
         return projects;

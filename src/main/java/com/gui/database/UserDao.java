@@ -10,7 +10,7 @@ import javax.persistence.EntityTransaction;
 
 import com.gui.entities.User;
 
-public class UserDao implements UserDaoInterface{
+class UserDao implements UserDaoInterface {
 	
 	private final EntityManagerFactory emf;
 	

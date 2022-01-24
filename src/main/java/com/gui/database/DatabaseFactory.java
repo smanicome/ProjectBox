@@ -4,9 +4,6 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 
-import com.gui.adelete.StudentDao;
-import com.gui.adelete.StudentDaoInterface;
-
 @ApplicationScoped
 public class DatabaseFactory {
 	@PersistenceUnit(unitName = "gui")
@@ -24,7 +21,7 @@ public class DatabaseFactory {
 		return new ProjectDao( this );
 	}
 
-	public CourseDao getCourseDAO() {
+	public CourseDaoInterface getCourseDAO() {
 		return new CourseDao( this );
 	}
 }
