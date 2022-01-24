@@ -7,7 +7,7 @@
 <ui:composition template="/resources/templates/template.xhtml">
     <ui:define name="head"></ui:define>
     <ui:define name="body">
-        <div class="fw-bold fs-3 text-black-50 text-center mb-3">Project list</div>
+        <div class="fw-bold fs-3 text-black-50 text-center mb-3">Project list for #{selectedCourse.course.code}</div>
 
         <h:form styleClass="d-flex flex-column align-items-center">
             <p:commandButton styleClass="ui-button-success w-25 mb-4" icon="pi pi-plus" value="Create a project" action="create_project"/>

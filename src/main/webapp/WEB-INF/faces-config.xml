@@ -24,16 +24,21 @@
             <redirect/>
         </navigation-case>
         <navigation-case>
-        	<from-outcome>Project</from-outcome>
+            <from-outcome>project_list</from-outcome>
             <to-view-id>/course_project_list.xhtml</to-view-id>
-            <redirect include-view-params="true">
-                <redirect-param>
-                    <name>course</name>
-                    <value>#{courseList.selectedCourse.code}</value>
-                </redirect-param>
-            </redirect>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/course_project_list.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>create_project</from-outcome>
+            <to-view-id>/create_project.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
     <navigation-rule>
         <from-view-id>/create_course.xhtml</from-view-id>
         <navigation-case>
@@ -42,26 +47,9 @@
     </navigation-rule>
 
     <navigation-rule>
-        <from-view-id>/course_project_list.xhtml</from-view-id>
+        <from-view-id>/create_project.xhtml</from-view-id>
         <navigation-case>
-        	<from-outcome>Description</from-outcome>
-            <to-view-id>/project_description.xhtml</to-view-id>
-            <redirect include-view-params="true">
-                <redirect-param>
-                    <name>project</name>
-                    <value>#{courseProjectList.selectedProject.id}</value>
-                </redirect-param>
-            </redirect>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>create_project</from-outcome>
             <to-view-id>/create_project.xhtml</to-view-id>
-            <redirect include-view-params="true">
-                <redirect-param>
-                    <name>course</name>
-                    <value>#{courseProjectList.courseCode}</value>
-                </redirect-param>
-            </redirect>
         </navigation-case>
     </navigation-rule>
 </faces-config>

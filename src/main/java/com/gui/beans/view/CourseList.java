@@ -6,6 +6,7 @@ import com.gui.entities.Course;
 import com.gui.entities.User;
 
 import javax.annotation.PostConstruct;
+import javax.faces.annotation.ManagedProperty;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,8 +25,6 @@ public class CourseList implements Serializable {
 
     private Collection<Course> courses;
 
-    private Course selectedCourse;
-
     @PostConstruct
     public void init() {
     	User teacher = session.getUser();
@@ -43,20 +42,12 @@ public class CourseList implements Serializable {
     public void setCourses(Collection<Course> courses) {
         this.courses = courses;
     }
-
-    public Course getSelectedCourse() {
-        return selectedCourse;
-    }
-
-    public void setSelectedCourse(Course selectedCourse) {
-        this.selectedCourse = selectedCourse;
-    }
     
     /***************************************************************************
 	 |  Listener & Action
 	***************************************************************************/
 
-    public String moveToProject() {
-        return "Project";
+    public String moveToCourse() {
+        return "project_list";
     }
 }

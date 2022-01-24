@@ -5,6 +5,7 @@ import com.gui.entities.Course;
 import com.gui.entities.Project;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.annotation.ManagedProperty;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -23,24 +24,15 @@ public class CourseProjectList implements Serializable {
 	private UserSession session;
 
     @Inject
-    @ManagedProperty(value="#{param.course}")
-    private String courseCode;
+    private SelectedCourse selectedCourse;
+
     private Collection<Project> projects;
-    private Project selectedProject;
 
     @PostConstruct
     public void load() {
-        Collection<Course> courseList = session.getUser().getCourses();
-        Optional<Course> opt = courseList.stream().filter( x -> x.getCode().equals(courseCode) ).findFirst();
+        Collection<Course> list = session.getUser().getCourses();
+        Optional<Course> opt = list.stream().filter( x -> x.getCode().equals(selectedCourse.getCourse().getCode()) ).findFirst();
         opt.ifPresent(x -> projects = x.getProjects());
-    }
-
-    public String getCourseCode() {
-        return courseCode;
-    }
-
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
     }
 
     public Collection<Project> getProjects() {
@@ -50,20 +42,4 @@ public class CourseProjectList implements Serializable {
     public void setProjects(Collection<Project> projects) {
         this.projects = projects;
     }
-
-	public Project getSelectedProject() {
-		return selectedProject;
-	}
-
-	public void setSelectedProject(Project selectedProject) {
-		this.selectedProject = selectedProject;
-	}
-	
-	/***************************************************************************
-	 |  Listener & Action
-	***************************************************************************/
-
-   public String moveToProjectInfo() {
-       return "Description";
-   }
 }
