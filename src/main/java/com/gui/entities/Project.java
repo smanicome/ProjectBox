@@ -39,14 +39,12 @@ public class Project implements Serializable {
 
     public Project() {
     }
-
-    public Project(String name) {
-        this.name = name;
-    }
-
-    public Project(String name, String description) {
-        this.name = name;
-        this.description = description;
+    
+    public Project(String name, String description, Date deadline, Course course) {
+    	this.name = name;
+    	this.description = description;
+    	this.deadline = deadline;
+    	this.course = course;
     }
 
     /***************************************************************************
