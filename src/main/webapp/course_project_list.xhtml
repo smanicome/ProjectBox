@@ -9,7 +9,9 @@
     <ui:define name="body">
         <div class="fw-bold fs-3 text-black-50 text-center mb-3">Project list</div>
 
-        <h:form styleClass="d-flex justify-content-center">
+        <h:form styleClass="d-flex flex-column align-items-center">
+            <p:commandButton styleClass="ui-button-success w-25 mb-4" icon="pi pi-plus" value="Create a project" action="create_project"/>
+
             <p:panelGrid columns="3" layout="grid" styleClass="w-75">
                 <c:forEach items="#{courseProjectList.projects}" var="project">
                     <p:commandButton

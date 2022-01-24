@@ -1,7 +1,6 @@
 package com.gui.beans.view;
 
 import com.gui.beans.session.UserSession;
-import com.gui.database.DatabaseFactory;
 import com.gui.entities.Course;
 import com.gui.entities.Project;
 
@@ -35,11 +34,11 @@ public class CourseProjectList implements Serializable {
         opt.ifPresent(x -> projects = x.getProjects());
     }
 
-    public String getCourseId() {
+    public String getCourseCode() {
         return courseCode;
     }
 
-    public void setCourseId(String courseCode) {
+    public void setCourseCode(String courseCode) {
         this.courseCode = courseCode;
     }
 

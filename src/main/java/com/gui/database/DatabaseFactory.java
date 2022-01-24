@@ -20,7 +20,11 @@ public class DatabaseFactory {
 		return new UserDao( this );
 	}
 
-	public ProjectDAO getProjectDAO() {
-		return new ProjectDAO( this );
+	public ProjectDao getProjectDAO() {
+		return new ProjectDao( this );
+	}
+
+	public CourseDao getCourseDAO() {
+		return new CourseDao( this );
 	}
 }
