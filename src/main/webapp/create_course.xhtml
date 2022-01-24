@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/resources/templates/template.xhtml">
+        <ui:define name="head"></ui:define>
+        <ui:define name="body">
+            <div class="flex-grow-1 d-flex justify-content-center align-items-center">
+                <div class="w-75 p-2 card shadow rounded">
+					<div class="fw-bold fs-3 text-black-50 text-center mb-3">Create a course</div>
+
+					<p:messages showDetail="false" autoUpdate="true" />
+					<h:form>
+						<div class="d-flex flex-column">
+	                        <div class="p-1 d-flex flex-column">
+	                            <label class="block text-900 font-medium mb-2">Code</label>
+	                            <p:inputText id="code" styleClass="w-100" value="#{createCourseBean.code}" required="true" requiredMessage="code required"/>
+	                            <h:message for="code" />
+	                        </div>
+
+							<div class="p-1 d-flex flex-column">
+								<label class="block text-900 font-medium mb-2">Name</label>
+								<p:inputText id="name" styleClass="w-100" value="#{createCourseBean.name}" required="true" requiredMessage="name required"/>
+								<h:message for="name" />
+							</div>
+
+	                        <p:commandButton value="Save" action="#{createCourseBean.save}" icon="pi pi-user" styleClass="mt-4 w-full"/>
+	                    </div>
+					</h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

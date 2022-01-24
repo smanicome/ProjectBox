@@ -8,15 +8,14 @@ import javax.persistence.EntityTransaction;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Transactional
-public class ProjectDAO {
+public class ProjectDao {
 
 	private final EntityManagerFactory emf;
 
-	public ProjectDAO(DatabaseFactory databaseFactory ) {
+	public ProjectDao(DatabaseFactory databaseFactory ) {
 		Objects.requireNonNull( databaseFactory );
 		this.emf = databaseFactory.getEmf();
 	}

@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Table(name = "project")
 @NamedQueries({
     @NamedQuery(name = "Project.findAll", query = "SELECT p FROM Project p"),
+    @NamedQuery(name = "Project.findByCourse", query = "SELECT p FROM Project p WHERE p.course.id = :courseId"),
     @NamedQuery(name = "Project.findByName", query = "SELECT p FROM Project p WHERE p.name = :name"),
     @NamedQuery(name = "Project.findByDescription", query = "SELECT p FROM Project p WHERE p.description = :description"),
     @NamedQuery(name = "Project.findByDeadline", query = "SELECT p FROM Project p WHERE p.deadline = :deadline")})
@@ -67,6 +68,14 @@ public class Project implements Serializable {
 
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     /*public Course getCourse() {
