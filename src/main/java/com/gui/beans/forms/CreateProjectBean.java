@@ -1,6 +1,7 @@
 package com.gui.beans.forms;
 
 import com.gui.beans.session.UserSession;
+import com.gui.beans.view.SelectedCourse;
 import com.gui.database.DatabaseFactory;
 import com.gui.entities.Course;
 import com.gui.entities.Project;
@@ -18,10 +19,9 @@ public class CreateProjectBean {
     private DatabaseFactory db;
 
     @Inject
-    @ManagedProperty(value="#{param.course}")
-    private String courseCode;
+    private SelectedCourse selectedCourse;
 
-    private Date deadline;
+    private Date deadline = new Date();
     private String description;
     private String name;
 
@@ -49,18 +49,12 @@ public class CreateProjectBean {
         this.deadline = deadline;
     }
 
-    public String getCourseCode() {
-        return courseCode;
-    }
-
     public void save() {
-        Course course = db.getCourseDAO().getCourseByCode(courseCode);
-
         Project p = new Project();
         p.setName(name);
         p.setDescription(description);
         p.setDeadline(deadline);
-        p.setCourse(course);
+        p.setCourse(selectedCourse.getCourse());
         db.getProjectDAO().create(p);
     }
 }

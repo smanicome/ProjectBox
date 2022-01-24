@@ -19,7 +19,7 @@
                             style="height: 25vh; white-space: pre;"
                             action="#{teacherCourseList.moveToCourse}"
                     >
-                        <f:setPropertyActionListener target="#{teacherCourseList.selectedCourse}" value="#{course}"/>
+                        <f:setPropertyActionListener target="#{selectedCourse.course}" value="#{course}"/>
                     </p:commandButton>
                 </c:forEach>
             </p:panelGrid>
