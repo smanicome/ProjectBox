@@ -48,15 +48,15 @@ public class Menu implements Serializable {
 	public void initialize() {
 		
 		//TODO :: replace with link
-		teacherMenu.add( new Item( "Account Settings", "account_setting.xhtml") );
+		teacherMenu.add( new Item( "Account Settings", "change_account_settings.xhtml") );
 		teacherMenu.add( new Item( "Last Submit", "account_setting.xhtml") );
 		
 		teacherMenu.add( new Item( "Course List", "course_list.xhtml") );
 		teacherMenu.add( new Item( "Student List", "student_list.xhtml") );
 		
-		studentMenu.add( new Item( "Account Settings", "account_setting.xhtml") );
+		studentMenu.add( new Item( "Account Settings", "change_account_settings.xhtml") );
 		studentMenu.add( new Item( "Firewall", "account_setting.xhtml") );
-		studentMenu.add( new Item( "My Course List", "account_setting.xhtml") );
+		studentMenu.add( new Item( "My Course List", "course_list.xhtml") );
 	}
 	
 	public Collection<Item> getMenu() {
