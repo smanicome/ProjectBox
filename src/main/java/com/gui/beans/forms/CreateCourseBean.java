@@ -37,6 +37,7 @@ public class CreateCourseBean {
     }
 
     public void save() {
+    	//TODO : set navigation with string
         Course c = new Course( code, name, session.getUser() );
         CourseDaoInterface dao = db.getCourseDAO();
         dao.create( c );

@@ -26,7 +26,7 @@ public class ProjectDescription implements Serializable{
 	 
 	 @PostConstruct
 	 public void load() {
-		 System.out.println( projectCode );
+		 System.out.println( "project code post const ::: " + projectCode );
 	 }
 
 	public Project getProject() {
