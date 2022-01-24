@@ -15,7 +15,7 @@ import java.util.Collection;
 
 @Named
 @ViewScoped
-public class TeacherCourseList implements Serializable {
+public class CourseList implements Serializable {
 
 	private static final long serialVersionUID = 5101202772139205460L;
 	
@@ -56,7 +56,7 @@ public class TeacherCourseList implements Serializable {
 	 |  Listener & Action
 	***************************************************************************/
 
-    public String moveToCourse() {
-        return "?faces-redirect=true";
+    public String moveToProject() {
+        return "Project";
     }
 }

@@ -15,10 +15,12 @@
             <p:panelGrid columns="3" layout="grid" styleClass="w-75">
                 <c:forEach items="#{courseProjectList.projects}" var="project">
                     <p:commandButton
-                            value="#{project.name}&#10;#{project.description}"
+                            value="#{project.name}"
                             styleClass="w-100 ui-button-raised ui-button-flat ui-button-plain"
                             style="height: 25vh; white-space: pre;"
+                            action="#{ courseProjectList.moveToProjectInfo }"
                     >
+                    	<f:setPropertyActionListener target="#{courseProjectList.selectedProject}" value="#{project}"/>
                     </p:commandButton>
                 </c:forEach>
             </p:panelGrid>

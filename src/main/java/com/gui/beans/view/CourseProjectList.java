@@ -26,11 +26,12 @@ public class CourseProjectList implements Serializable {
     @ManagedProperty(value="#{param.course}")
     private String courseCode;
     private Collection<Project> projects;
+    private Project selectedProject;
 
     @PostConstruct
     public void load() {
-        Collection<Course> list = session.getUser().getCourses();
-        Optional<Course> opt = list.stream().filter( x -> x.getCode().equals(courseCode) ).findFirst();
+        Collection<Course> courseList = session.getUser().getCourses();
+        Optional<Course> opt = courseList.stream().filter( x -> x.getCode().equals(courseCode) ).findFirst();
         opt.ifPresent(x -> projects = x.getProjects());
     }
 
@@ -49,4 +50,20 @@ public class CourseProjectList implements Serializable {
     public void setProjects(Collection<Project> projects) {
         this.projects = projects;
     }
+
+	public Project getSelectedProject() {
+		return selectedProject;
+	}
+
+	public void setSelectedProject(Project selectedProject) {
+		this.selectedProject = selectedProject;
+	}
+	
+	/***************************************************************************
+	 |  Listener & Action
+	***************************************************************************/
+
+   public String moveToProjectInfo() {
+       return "Description";
+   }
 }

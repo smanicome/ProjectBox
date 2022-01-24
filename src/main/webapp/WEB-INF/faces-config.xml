@@ -12,35 +12,24 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>Student</from-outcome>
-            <to-view-id>/course_project_list.xhtml</to-view-id>
+            <to-view-id>/course_list.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 
     <navigation-rule>
-        <from-view-id>/new_account.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>failure</from-outcome>
-            <to-view-id>/new_account.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/login.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-
-    <navigation-rule>
-        <from-view-id>/teacher_course_list.xhtml</from-view-id>
+        <from-view-id>/course_list.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>create_course</from-outcome>
             <to-view-id>/create_course.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
         <navigation-case>
+        	<from-outcome>Project</from-outcome>
             <to-view-id>/course_project_list.xhtml</to-view-id>
             <redirect include-view-params="true">
                 <redirect-param>
                     <name>course</name>
-                    <value>#{teacherCourseList.selectedCourse.code}</value>
+                    <value>#{courseList.selectedCourse.code}</value>
                 </redirect-param>
             </redirect>
         </navigation-case>
@@ -54,6 +43,16 @@
 
     <navigation-rule>
         <from-view-id>/course_project_list.xhtml</from-view-id>
+        <navigation-case>
+        	<from-outcome>Description</from-outcome>
+            <to-view-id>/project_description.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <redirect-param>
+                    <name>project</name>
+                    <value>#{courseProjectList.selectedProject.id}</value>
+                </redirect-param>
+            </redirect>
+        </navigation-case>
         <navigation-case>
             <from-outcome>create_project</from-outcome>
             <to-view-id>/create_project.xhtml</to-view-id>
