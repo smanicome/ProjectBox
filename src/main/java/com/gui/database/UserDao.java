@@ -63,13 +63,27 @@ class UserDao implements UserDaoInterface {
 	@Override
 	public void create( User user ) {
 		Objects.requireNonNull( user );
-		
 		EntityManager em = null;
         try {
         	em = this.getEntityManager();
         	EntityTransaction transation = em.getTransaction();
         	transation.begin();
         	em.persist( user );
+        	transation.commit();
+        } finally {
+        	if ( em != null ) em.close();
+        }
+	}
+
+	@Override
+	public void update(User user) {
+		Objects.requireNonNull( user );
+		EntityManager em = null;
+        try {
+        	em = this.getEntityManager();
+        	EntityTransaction transation = em.getTransaction();
+        	transation.begin();
+        	em.merge(user);
         	transation.commit();
         } finally {
         	if ( em != null ) em.close();

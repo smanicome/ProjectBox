@@ -58,4 +58,18 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/change_account_settings.xhtml</from-view-id>
+        <navigation-case>
+        	<from-outcome>teacher_landing_page</from-outcome>
+            <to-view-id>/teacher_landingpage.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+        	<from-outcome>student_landing_page</from-outcome>
+            <to-view-id>/course_list.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

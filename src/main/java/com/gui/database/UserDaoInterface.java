@@ -10,4 +10,5 @@ public interface UserDaoInterface {
 	Optional<User> getUserById( int id );
 	List<User> getUsers();
 	void create( User user );
+	void update( User user );
 }

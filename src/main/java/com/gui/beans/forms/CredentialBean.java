@@ -38,32 +38,26 @@ public class CredentialBean implements Serializable {
     private boolean remember = false;
 
     public String getEmail() {
-    	System.out.println( "get email" );
         return email;
     }
 
     public void setEmail(String email) {
-    	System.out.println( "set email" );
         this.email = email;
     }
 
     public String getPassword() {
-    	System.out.println( "get password" );
         return password;
     }
 
     public void setPassword(String password) {
-    	System.out.println( "set password" );
         this.password = password;
     }
 
     public boolean isRemember() {
-    	System.out.println( "get remember" );
         return remember;
     }
 
     public void setRemember(boolean remember) {
-    	System.out.println( "set remember" );
         this.remember = remember;
     }
 
@@ -75,7 +69,6 @@ public class CredentialBean implements Serializable {
     		User user = optionalUser.get();
     		session.setAuth(true);
     		session.setUser( user );
-    		System.out.println( "user ip :: " + user.getIps().size() );
     		return user.getType();
     	}
     	else {
