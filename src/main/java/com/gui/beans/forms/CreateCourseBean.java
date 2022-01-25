@@ -4,6 +4,7 @@ import com.gui.beans.session.UserSession;
 import com.gui.database.CourseDaoInterface;
 import com.gui.database.DatabaseFactory;
 import com.gui.entities.Course;
+import com.gui.services.Folder;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -37,11 +38,11 @@ public class CreateCourseBean {
     }
 
     public String save() {
-    	//TODO : set navigation with string
     	System.out.println( "save & move to course list" );
         Course c = new Course( code, name, session.getUser() );
         CourseDaoInterface dao = db.getCourseDAO();
         dao.create( c );
+        Folder.create( code );
         return "course_list";
     }
 }

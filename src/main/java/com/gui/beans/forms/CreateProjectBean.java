@@ -2,7 +2,9 @@ package com.gui.beans.forms;
 
 import com.gui.beans.session.SelectedCourse;
 import com.gui.database.DatabaseFactory;
+import com.gui.entities.Course;
 import com.gui.entities.Project;
+import com.gui.services.Folder;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -52,8 +54,10 @@ public class CreateProjectBean implements Serializable {
     }
 
     public String save() {
-        Project p = new Project( name, description, deadline, selectedCourse.getCourse() );
+    	Course course = selectedCourse.getCourse();
+        Project p = new Project( name, description, deadline, course );
         db.getProjectDAO().create(p);
+        Folder.create( course.getCode() + "/" + name );
         return "project_list";
     }
 }
