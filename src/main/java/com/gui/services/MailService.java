@@ -11,11 +11,23 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * <h1>Mail Service</h1>
+ * <p>Service that send email to a given mail address</p>
+ */
 @ApplicationScoped
 public class MailService {
 
 	@Resource(lookup = "mail/MailService")
     private Session mailSession;
+
+	/**
+	 * Sends an email with an object containing :
+	 * @param subject
+	 * @param recipient
+	 * @param content
+	 * @throws MessagingException
+	 */
 	
 	public void send( String subject, String recipient, String content ) throws MessagingException {
 		Message msg = new MimeMessage(mailSession);

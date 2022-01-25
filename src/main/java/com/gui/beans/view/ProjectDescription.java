@@ -9,6 +9,10 @@ import javax.inject.Named;
 
 import com.gui.entities.Project;
 
+/**
+ * Project description view
+ */
+
 @Named
 @ViewScoped
 public class ProjectDescription implements Serializable{
@@ -19,16 +23,27 @@ public class ProjectDescription implements Serializable{
 	 @ManagedProperty(value="#{param.project}")
 	 private int projectCode;
 	 private Project project;
-	 
-	 @PostConstruct
+
+	/**
+	 * Load code project and displays it on the console
+	 */
+	@PostConstruct
 	 public void load() {
 		 System.out.println( "project code post const ::: " + projectCode );
 	 }
 
+	/**
+	 * Get the project
+	 * @return project, Project type
+	 */
 	public Project getProject() {
 		return project;
 	}
 
+	/**
+	 * Set the project
+	 * @param project, Project type
+	 */
 	public void setProject(Project project) {
 		this.project = project;
 	}

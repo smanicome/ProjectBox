@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Student list view
+ */
 @Named
 @ViewScoped
 public class StudentList implements Serializable {
@@ -22,7 +25,10 @@ public class StudentList implements Serializable {
 	@Inject
 	private DatabaseFactory db;
 	private ArrayList<User> students = new ArrayList<>();
-	
+
+	/**
+	 * Initialize list of user, filter to collect only students
+	 */
 	@PostConstruct
 	public void initialize() {
     	UserDaoInterface userDao = db.getUserDAO();
@@ -34,15 +40,27 @@ public class StudentList implements Serializable {
 	 |  Getter & Setter
 	***************************************************************************/
 
+	/**
+	 * Get student List
+	 * @return ArrayList<User>
+	 */
     public ArrayList<User> getStudents() {
         return students;
     }
 
+	/**
+	 * Set student list
+	 * @param students, ArrayList<User> type
+	 */
     public void setStudents(ArrayList<User> students) {
         this.students = students;
     }
-    
-    public void addStudent(User student) {
+
+	/**
+	 * Add student to student list
+	 * @param student, Student type
+	 */
+	public void addStudent(User student) {
         this.students.add(student);
     }
 }

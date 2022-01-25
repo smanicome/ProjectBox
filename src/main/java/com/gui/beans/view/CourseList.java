@@ -16,6 +16,11 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Optional;
 
+/**
+ * <h1>List of courses view</h1>
+ * <p>Take collection of courses as parameter</p>
+ */
+
 @Named
 @ViewScoped
 public class CourseList implements Serializable {
@@ -30,6 +35,9 @@ public class CourseList implements Serializable {
 
     private Collection<Course> courses;
 
+    /**
+     * Initialize Collection of courses from course table of the database
+     */
     @PostConstruct
     public void init() {
     	User user = session.getUser();
@@ -42,9 +50,19 @@ public class CourseList implements Serializable {
 	 |  Getter & Setter
 	***************************************************************************/
 
+    /**
+     * Get the collection of courses
+     * @return Collection of courses
+     */
+
     public Collection<Course> getCourses() {
         return courses;
     }
+
+    /**
+     * Set the courses Collection
+     * @param courses, collection of courses
+     */
 
     public void setCourses(Collection<Course> courses) {
         this.courses = courses;
@@ -54,6 +72,9 @@ public class CourseList implements Serializable {
 	 |  Listener & Action
 	***************************************************************************/
 
+    /** Method of redirection
+     * @return "project_list" to change page for project list page
+     */
     public String moveToProject() {
         return "project_list";
     }
