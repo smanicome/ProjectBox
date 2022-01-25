@@ -1,7 +1,7 @@
 package com.gui.beans.view;
 
-import com.gui.beans.session.UserSession;
-import com.gui.entities.Course;
+import com.gui.beans.session.SelectedCourse;
+import com.gui.database.DatabaseFactory;
 import com.gui.entities.Project;
 
 import javax.annotation.PostConstruct;
@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Optional;
 
 @Named
 @ViewScoped
@@ -19,7 +18,7 @@ public class CourseProjectList implements Serializable {
 	private static final long serialVersionUID = -9044487822404564248L;
 	
 	@Inject
-	private UserSession session;
+	private DatabaseFactory db;
 
     @Inject
     private SelectedCourse selectedCourse;
@@ -29,10 +28,8 @@ public class CourseProjectList implements Serializable {
 
     @PostConstruct
     public void load() {
-    	System.out.println( "loado" );
-        Collection<Course> courseList = session.getUser().getCourses();
-        Optional<Course> opt = courseList.stream().filter( x -> x.getCode().equals(selectedCourse.getCourse().getCode()) ).findFirst();
-        opt.ifPresent(x -> projects = x.getProjects());
+    	int courseId = selectedCourse.getCourse().getId();
+    	projects = db.getProjectDAO().getProjectsByCourse( courseId );
     }
 
     public Collection<Project> getProjects() {

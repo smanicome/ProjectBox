@@ -1,6 +1,6 @@
 package com.gui.beans.forms;
 
-import com.gui.beans.view.SelectedCourse;
+import com.gui.beans.session.SelectedCourse;
 import com.gui.database.DatabaseFactory;
 import com.gui.entities.Project;
 
@@ -44,33 +44,16 @@ public class CreateProjectBean implements Serializable {
     }
 
     public Date getDeadline() {
-    	System.out.println( "get deadline :: " + deadline );
         return deadline;
     }
 
     public void setDeadline(Date deadline) {
-    	System.out.println( "get deadline :: " + deadline );
         this.deadline = deadline;
     }
 
-    public void save() {
-    	System.out.println( "save projejct" );
-        Project p = new Project();
-        p.setName(name);
-        p.setDescription(description);
-        p.setDeadline(deadline);
-        p.setCourse(selectedCourse.getCourse());
+    public String save() {
+        Project p = new Project( name, description, deadline, selectedCourse.getCourse() );
         db.getProjectDAO().create(p);
-
-        /*
-        * // TODO :: optional de course, date in db, remove hidden input to something else
-    	System.out.println( "toto == "+ courseCode );
-        Course course = db.getCourseDAO().getCourseByCode(courseCode);
-        System.out.println( "set project" );
-
-        Project p = new Project(name, description, deadline, course);
-        System.out.println( "create project" );
-        db.getProjectDAO().create(p);
-        return "failure";*/
+        return "project_list";
     }
 }

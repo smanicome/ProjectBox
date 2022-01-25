@@ -9,10 +9,10 @@
         <ui:define name="body">
         	<div class="fw-bold fs-3 text-black-50 text-center mb-3">
         		<h:form enctype="multipart/form-data">
-	                <h:inputFile value="#{studentListBean.csvFile}" require="true" required_message="Please Upload a file" alt="Upload file" />
+	                <h:inputFile value="#{uploadStudentListSCV.csvFile}" require="true" required_message="Please Upload a file" alt="Upload file" />
 	                <br/>
 	                <h:commandButton value="save" 
-	                                 actionListener="#{studentListBean.uploadCSV}" />
+	                                 actionListener="#{uploadStudentListSCV.uploadCSV}" />
 	            </h:form>
         	</div>
             <div class="fw-bold fs-3 text-black-50 text-center mb-3">Student list</div>

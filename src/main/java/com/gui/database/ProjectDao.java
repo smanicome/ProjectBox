@@ -11,11 +11,11 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Transactional
-public class ProjectDao {
+public class ProjectDao implements ProjectDaoInterface {
 
 	private final EntityManagerFactory emf;
 
-	public ProjectDao(DatabaseFactory databaseFactory ) {
+	ProjectDao(DatabaseFactory databaseFactory ) {
 		Objects.requireNonNull( databaseFactory );
 		this.emf = databaseFactory.getEmf();
 	}
@@ -24,6 +24,7 @@ public class ProjectDao {
         return emf.createEntityManager();
     }
 	
+	@Override
 	public void create( Project project ) {
 		Objects.requireNonNull( project );
 		
@@ -39,7 +40,9 @@ public class ProjectDao {
         }
 	}
 	
-	public List<Project> getProjectsByCourse(String courseId ) {
+	@Override
+	public List<Project> getProjectsByCourse( int courseId ) {
+		if ( courseId <= 0 ) throw new IllegalArgumentException();
 		EntityManager em = null;
         try {
         	em = this.getEntityManager();

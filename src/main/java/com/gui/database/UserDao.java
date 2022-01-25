@@ -36,6 +36,18 @@ class UserDao implements UserDaoInterface {
         	if ( em != null ) em.close();
         }
 	}
+	
+	@Override
+	public Optional<User> getUserById(int id) {
+		if ( id <= 0 ) throw new IllegalArgumentException();
+		EntityManager em = null;
+        try {
+        	em = this.getEntityManager();
+        	return em.createNamedQuery("User.findByid", User.class).setParameter("id", id).getResultStream().findFirst();
+        } finally {
+        	if ( em != null ) em.close();
+        }
+	}
 
 	@Override
 	public List<User> getUsers() {

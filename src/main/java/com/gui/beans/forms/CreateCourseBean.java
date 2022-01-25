@@ -36,10 +36,12 @@ public class CreateCourseBean {
         this.name = name;
     }
 
-    public void save() {
+    public String save() {
     	//TODO : set navigation with string
+    	System.out.println( "save & move to course list" );
         Course c = new Course( code, name, session.getUser() );
         CourseDaoInterface dao = db.getCourseDAO();
         dao.create( c );
+        return "course_list";
     }
 }

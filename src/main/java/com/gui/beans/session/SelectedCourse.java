@@ -1,4 +1,4 @@
-package com.gui.beans.view;
+package com.gui.beans.session;
 
 import com.gui.entities.Course;
 

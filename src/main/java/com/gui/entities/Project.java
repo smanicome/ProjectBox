@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "project")
 @NamedQueries({
-    @NamedQuery(name = "Project.findAll", query = "SELECT p FROM Project p"),
+    @NamedQuery(name = "Project.list", query = "SELECT p FROM Project p"),
     @NamedQuery(name = "Project.findByCourse", query = "SELECT p FROM Project p WHERE p.course.id = :courseId"),
     @NamedQuery(name = "Project.findByName", query = "SELECT p FROM Project p WHERE p.name = :name"),
     @NamedQuery(name = "Project.findByDescription", query = "SELECT p FROM Project p WHERE p.description = :description"),

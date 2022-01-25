@@ -41,4 +41,8 @@ public class StudentList implements Serializable {
     public void setStudents(ArrayList<User> students) {
         this.students = students;
     }
+    
+    public void addStudent(User student) {
+        this.students.add(student);
+    }
 }

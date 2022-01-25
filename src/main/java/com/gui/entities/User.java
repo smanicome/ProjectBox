@@ -17,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -25,6 +26,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 @Table(name = "user")
 @NamedQueries({
 	@NamedQuery(name = "User.login", query = "select us from User us where us.email = :email AND us.password = :password"),
+	@NamedQuery(name = "User.findByid", query = "select us from User us where us.id = :id"),
 	@NamedQuery(name = "User.list", query = "select us from User us")
 })
 public class User {
@@ -47,6 +49,9 @@ public class User {
             @JoinColumn(name = "course_id", referencedColumnName = "id")})
     @ManyToMany
     private Collection<Course> courses;
+	
+	@OneToMany( mappedBy = "user" )
+    private List<Ip> ips;
 	
 	/***************************************************************************
 	 |  Constructor
@@ -149,6 +154,14 @@ public class User {
 		return type.getName().equals("Teacher");
 	}
 	
+	public List<Ip> getIps() {
+		return ips;
+	}
+
+	public void setIps(List<Ip> ips) {
+		this.ips = ips;
+	}
+
 	/***************************************************************************
 	 |  Inherited
 	***************************************************************************/

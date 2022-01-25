@@ -17,7 +17,7 @@ public class DatabaseFactory {
 		return new UserDao( this );
 	}
 
-	public ProjectDao getProjectDAO() {
+	public ProjectDaoInterface getProjectDAO() {
 		return new ProjectDao( this );
 	}
 

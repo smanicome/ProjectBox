@@ -6,83 +6,56 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "type")
-public class Type {
-	public final static String DEFAULT_TYPE 	= "NONE";
-	private final static String TEACHER_TYPE 	= "Teacher";
-	private final static String STUDENT_TYPE 	= "Student";
-	public enum typeEnum{
-		TEACHER, STUDENT
-	}
-	
+@Table(name = "ip")
+public class Ip {
 	@Id @GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int id;
-	private String name;
+	private String address;
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	@ManyToOne(optional = false)
+	private User user;
 	
 	/***************************************************************************
 	 |  Constructor
 	***************************************************************************/
 	
-	public Type() {
-		
-	}
-	
-	public Type( String name ) {
-		Objects.requireNonNull( name );
-		this.name = name;
-	}
-	
-	public Type( typeEnum type ) {
-		Objects.requireNonNull( type );
-		switch (type) {
-		case TEACHER:
-			this.id = 1;
-			this.name = TEACHER_TYPE;
-			break;
-		case STUDENT:
-			this.id = 2;
-			this.name = STUDENT_TYPE;
-			break;
-		default:
-			new IllegalArgumentException();
-			break;
-		}
-	}
-
 	/***************************************************************************
-	 |  Setter Gettter
+	 |  Getter & Setter
 	***************************************************************************/
 	
 	public int getId() {
 		return id;
 	}
-	
-	public String getName() {
-		return name;
+	public String getAddress() {
+		return address;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	/***************************************************************************
 	 |  Inherited
 	***************************************************************************/
-
+	
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder().append("Type [id=").append(id)
-				.append(", name=").append(name).append( "]" );
-		return sb.toString();
+		return "Ip [id=" + id + ", address=" + address + ", user=" + user + "]";
 	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name);
+		return Objects.hash(address, id, user);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -91,7 +64,7 @@ public class Type {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Type other = (Type) obj;
-		return id == other.id && Objects.equals(name, other.name);
+		Ip other = (Ip) obj;
+		return Objects.equals(address, other.address) && id == other.id && Objects.equals(user, other.user);
 	}
 }

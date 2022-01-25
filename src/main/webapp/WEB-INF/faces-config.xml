@@ -39,13 +39,13 @@
         <navigation-case>
             <from-outcome>project_info</from-outcome>
             <to-view-id>/project_description.xhtml</to-view-id>
-            <redirect/>
         </navigation-case>
     </navigation-rule>
 
     <navigation-rule>
         <from-view-id>/create_course.xhtml</from-view-id>
         <navigation-case>
+        	<from-outcome>course_list</from-outcome>
             <to-view-id>/course_list.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
@@ -53,7 +53,9 @@
     <navigation-rule>
         <from-view-id>/create_project.xhtml</from-view-id>
         <navigation-case>
-            <to-view-id>/create_project.xhtml</to-view-id>
+        	<from-outcome>project_list</from-outcome>
+            <to-view-id>/course_project_list.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
 </faces-config>

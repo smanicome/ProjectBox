@@ -75,6 +75,7 @@ public class CredentialBean implements Serializable {
     		User user = optionalUser.get();
     		session.setAuth(true);
     		session.setUser( user );
+    		System.out.println( "user ip :: " + user.getIps().size() );
     		return user.getType();
     	}
     	else {
