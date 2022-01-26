@@ -5,7 +5,11 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/resources/templates/template.xhtml">
-        <ui:define name="head"></ui:define>
+        <ui:define name="head">
+        	<f:metadata>
+        		<f:event listener="#{ navigationAccess.authentifiedOnly }" type="preRenderView"></f:event>
+        	</f:metadata>
+        </ui:define>
         <ui:define name="body">
 
             <div class="h-100 d-flex justify-content-center align-items-center">

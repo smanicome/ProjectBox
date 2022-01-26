@@ -9,12 +9,10 @@
         <navigation-case>
             <from-outcome>Teacher</from-outcome>
             <to-view-id>/teacher_landingpage.xhtml</to-view-id>
-            <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>Student</from-outcome>
             <to-view-id>/course_list.xhtml</to-view-id>
-            <redirect/>
         </navigation-case>
     </navigation-rule>
 
@@ -23,7 +21,6 @@
         <navigation-case>
             <from-outcome>create_course</from-outcome>
             <to-view-id>/create_course.xhtml</to-view-id>
-            <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>project_list</from-outcome>
@@ -36,11 +33,11 @@
         <navigation-case>
             <from-outcome>create_project</from-outcome>
             <to-view-id>/create_project.xhtml</to-view-id>
-            <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>project_info</from-outcome>
             <to-view-id>/project_description.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
 
@@ -57,7 +54,6 @@
         <navigation-case>
         	<from-outcome>project_list</from-outcome>
             <to-view-id>/course_project_list.xhtml</to-view-id>
-            <redirect/>
         </navigation-case>
     </navigation-rule>
     
@@ -66,12 +62,10 @@
         <navigation-case>
         	<from-outcome>teacher_landing_page</from-outcome>
             <to-view-id>/teacher_landingpage.xhtml</to-view-id>
-            <redirect/>
         </navigation-case>
         <navigation-case>
         	<from-outcome>student_landing_page</from-outcome>
             <to-view-id>/course_list.xhtml</to-view-id>
-            <redirect/>
         </navigation-case>
     </navigation-rule>
     

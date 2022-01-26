@@ -1,10 +1,8 @@
 package com.gui.beans.session;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import com.gui.entities.Type;
@@ -61,36 +59,5 @@ public class UserSession implements Serializable{
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-	
-	/***************************************************************************
-	 |  Business Logic
-	***************************************************************************/
-
-	/**
-	 * Method that redirects the user to a certain page if this one is not authentified
-	 */
-
-	public void checkAuthentification() {
-		System.out.println("check");
-		if ( !this.isAuth ) {
-			System.out.println("redirect");
-			doRedirect( "student_list.xhtml" );
-		}
-	}
-
-	/**
-	 * Method that redirects to a given url
-	 * @param url
-	 * @throws IOException if url does not exist
-	 */
-	
-	private void doRedirect( String url ) {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		try {
-			fc.getExternalContext().redirect( url );
-		} catch (IOException e) {
-			System.out.println( e.getMessage() );
-		}
 	}
 }
