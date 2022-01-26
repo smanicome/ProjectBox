@@ -125,7 +125,6 @@ public class CredentialBean implements Serializable {
      */
     
     public String logout() {
-    	System.out.println( "log out" );
     	session.setAuth( false );
     	session.setUser( new User( new Type( Type.DEFAULT_TYPE) ) );
     	return "login";

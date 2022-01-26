@@ -14,7 +14,9 @@
         <div class="fw-bold fs-3 text-black-50 text-center mb-3">Course list</div>
 
         <h:form styleClass="d-flex flex-column align-items-center">
-            <p:commandButton styleClass="ui-button-success w-25 mb-4" icon="pi pi-plus" value="Create a course" action="create_course"/>
+        	<h:panelGroup rendered="#{userSession.user.isTeacher()}">
+        		<p:commandButton styleClass="ui-button-success w-25 mb-4" icon="pi pi-plus" value="Create a course" action="create_course"/>
+        	</h:panelGroup>
             <p:panelGrid columns="3" layout="grid" styleClass="w-75">
                 <c:forEach items="#{courseList.courses}" var="course">
                     <p:commandButton

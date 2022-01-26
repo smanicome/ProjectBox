@@ -44,7 +44,6 @@ public class IpAddressList implements Serializable {
     	User user = session.getUser();
     	UserDaoInterface dao = db.getUserDAO();
     	Optional<User> opt = dao.getUserById( user.getId() );
-    	System.out.println( "size :: " + opt.get().getIps().size() );
     	opt.ifPresent( userX -> ips = userX.getIps() );
     }
 	
