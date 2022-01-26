@@ -30,6 +30,24 @@ public class Ip {
 	/***************************************************************************
 	 |  Constructor
 	***************************************************************************/
+	/**
+	 * Default IP constructor
+	 */
+	public Ip() {
+		
+	}
+	/**
+	 * Constructor setting address and the user which this IP belong
+	 * @param address string 
+	 * @param user 
+	 */
+	public Ip( String address, User user ) {
+		Objects.requireNonNull( address );
+		Objects.requireNonNull( user );
+		
+		this.address = address;
+		this.user = user;
+	}
 	
 	/***************************************************************************
 	 |  Getter & Setter

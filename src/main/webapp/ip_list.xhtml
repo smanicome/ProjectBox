@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/resources/templates/template.xhtml">
+        <ui:define name="head"></ui:define>
+        <ui:define name="body">
+            <div class="flex-grow-1 d-flex justify-content-center align-items-center">
+                   <div class="text-center mb-2">
+                    
+                   <div class="d-flex flex-column">
+	                   <div class="container mt-3">
+	                       <p:dataTable id="ipList" var="ip" value="#{ipAddressList.ips}" lazy="False">
+	                           <p:column headerText="IP List">
+	                               <h:outputText value="#{ip.address}" />
+	                           </p:column>
+	                       </p:dataTable>
+	                   </div>
+                    </div>
+
+					<h:form>
+                        <div class="p-3 d-flex flex-column">
+                            <p:inputText id="newIp" type="text" styleClass="w-100" value="#{createIpAddress.address}" required="true"/>
+                        </div>
+                        
+                        <p:commandButton value="Add IP" action="#{createIpAddress.save}"  styleClass="w-full"/>
+					</h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -47,4 +47,13 @@ public class DatabaseFactory {
 	public CourseDaoInterface getCourseDAO() {
 		return new CourseDao( this );
 	}
+	
+	/**
+	 * Returns Interfaces for transactions with Ip table of database
+	 * @return IpDaoInterface type
+	 */
+
+	public IpDaoInterface getIpDao() {
+		return new IpDao( this );
+	}
 }
