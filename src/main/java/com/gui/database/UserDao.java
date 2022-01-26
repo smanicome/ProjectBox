@@ -89,4 +89,19 @@ class UserDao implements UserDaoInterface {
         	if ( em != null ) em.close();
         }
 	}
+
+	@Override
+	public void remove(User user) {
+		Objects.requireNonNull( user );
+		EntityManager em = null;
+        try {
+        	em = this.getEntityManager();
+        	EntityTransaction transation = em.getTransaction();
+        	transation.begin();
+        	em.remove( em.contains(user) ? user : em.merge(user) );
+        	transation.commit();
+        } finally {
+        	if ( em != null ) em.close();
+        }
+	}
 }

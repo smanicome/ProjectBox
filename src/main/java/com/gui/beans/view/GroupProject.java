@@ -3,7 +3,7 @@ package com.gui.beans.view;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import com.gui.adelete.Student;
+import com.gui.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Objects;
 @RequestScoped
 public class GroupProject {
     private String groupName;
-    private List<Student> teamMembers;
+    private List<User> teamMembers;
     private List<String> versions;
 
     public GroupProject() {
@@ -33,7 +33,7 @@ public class GroupProject {
         versions.add("1.0.0");
     }
 
-    public void addTeamMember(Student newStudent) {
+    public void addTeamMember(User newStudent) {
         Objects.requireNonNull(newStudent);
         teamMembers.add(newStudent);
     }
@@ -42,11 +42,11 @@ public class GroupProject {
         versions.add(version);
     }
 
-    public List<Student> getTeamMembers() {
+    public List<User> getTeamMembers() {
         return teamMembers;
     }
 
-    public void setTeamMembers(List<Student> teamMembers) {
+    public void setTeamMembers(List<User> teamMembers) {
         this.teamMembers = teamMembers;
     }
 

@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -50,8 +51,14 @@ public class User {
     @ManyToMany
     private Collection<Course> courses;
 	
-	@OneToMany( mappedBy = "user" )
+	@OneToMany( mappedBy = "user", cascade = CascadeType.REMOVE )
     private List<Ip> ips;
+	
+	@JoinTable(name = "teams_users", joinColumns = {
+            @JoinColumn(name = "user_id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "team_id", referencedColumnName = "id")})
+    @ManyToMany
+    private Collection<Team> teams;
 	
 	/***************************************************************************
 	 |  Constructor

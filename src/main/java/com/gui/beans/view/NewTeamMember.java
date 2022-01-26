@@ -3,7 +3,7 @@ package com.gui.beans.view;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import com.gui.adelete.Student;
+import com.gui.entities.User;
 
 @Named
 @RequestScoped
@@ -18,7 +18,7 @@ public class NewTeamMember {
         this.value = value;
     }
 
-    public Student getStudent() {
+    public User getStudent() {
         return null;
     }
 }

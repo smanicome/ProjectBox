@@ -1,9 +1,12 @@
 package com.gui.beans.view;
 
 import javax.annotation.PostConstruct;
+import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.PrimeFaces;
 
 import com.gui.database.DatabaseFactory;
 import com.gui.database.UserDaoInterface;
@@ -22,6 +25,7 @@ public class StudentList implements Serializable {
 	@Inject
 	private DatabaseFactory db;
 	private ArrayList<User> students = new ArrayList<>();
+	private User selectedStudent;
 	
 	@PostConstruct
 	public void initialize() {
@@ -42,7 +46,30 @@ public class StudentList implements Serializable {
         this.students = students;
     }
     
-    public void addStudent(User student) {
+    public User getSelectedStudent() {
+		return selectedStudent;
+	}
+
+	public void setSelectedStudent(User selectedStudent) {
+		this.selectedStudent = selectedStudent;
+	}
+
+	public void addStudent(User student) {
         this.students.add(student);
     }
+	
+	/***************************************************************************
+	 |  Action & Listener
+	***************************************************************************/
+	
+	public void delete(ActionEvent event) {
+		System.out.println( "start delete" );
+		if ( selectedStudent != null ) {
+			UserDaoInterface dao = db.getUserDAO();
+			dao.remove( selectedStudent );
+			this.students.remove( selectedStudent );
+			PrimeFaces.current().ajax().update("userList");
+			selectedStudent = null;
+		}
+	}
 }

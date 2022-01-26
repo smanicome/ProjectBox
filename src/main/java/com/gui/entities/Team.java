@@ -8,8 +8,6 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.*;
 
-import com.gui.adelete.Student;
-
 /**
  *
  * @author angel
@@ -27,8 +25,11 @@ public class Team implements Serializable {
     @Basic(optional = false)
     @Column(name = "name")
     private String name;
-    @ManyToMany(mappedBy = "teams")
-    private Collection<Student> students;
+    @JoinTable(name = "teams_users", joinColumns = {
+            @JoinColumn(name = "team_id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "user_id", referencedColumnName = "id")})
+    @ManyToMany
+    private Collection<User> students;
     @JoinColumn(name = "project_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Project project;
@@ -64,11 +65,11 @@ public class Team implements Serializable {
         this.name = name;
     }
 
-    public Collection<Student> getStudents() {
+    public Collection<User> getStudents() {
         return students;
     }
 
-    public void setStudents(Collection<Student> students) {
+    public void setStudents(Collection<User> students) {
         this.students = students;
     }
 
