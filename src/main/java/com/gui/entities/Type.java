@@ -8,6 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * <h1>Entity Type</h1>
+ * <p>Define type objects based on the related table in the database</p>
+ * <p>A type object has an id and a name</p>
+ */
+
 @Entity
 @Table(name = "type")
 public class Type {
@@ -25,15 +31,30 @@ public class Type {
 	/***************************************************************************
 	 |  Constructor
 	***************************************************************************/
-	
+
+	/**
+	 * Empty constructor
+	 */
+
 	public Type() {
 		
 	}
-	
+
+	/**
+	 * Constructor that sets Type's name
+	 * @param name of type param
+	 */
+
 	public Type( String name ) {
 		Objects.requireNonNull( name );
 		this.name = name;
 	}
+
+	/**
+	 * Constructor that sets type with an enumeration (TEACHER_TYPE, STUDENT_TYPE allowed)
+	 * @param type, typeEnum
+	 * @throws IllegalArgumentException if type has non valid value
+	 */
 	
 	public Type( typeEnum type ) {
 		Objects.requireNonNull( type );
@@ -55,14 +76,30 @@ public class Type {
 	/***************************************************************************
 	 |  Setter Gettter
 	***************************************************************************/
-	
+
+	/**
+	 * Getter of Type's id
+	 * @return id of type int
+	 */
+
 	public int getId() {
 		return id;
 	}
-	
+
+	/**
+	 * Getter of Type's name
+	 * @return name of type String
+	 */
+
 	public String getName() {
 		return name;
 	}
+
+	/**
+	 * Setter of Type's name
+	 * @param name of type String
+	 */
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -71,6 +108,11 @@ public class Type {
 	 |  Inherited
 	***************************************************************************/
 
+	/**
+	 * toString method
+	 * @return String containing name and id of the current Type
+	 */
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder().append("Type [id=").append(id)
@@ -78,10 +120,21 @@ public class Type {
 		return sb.toString();
 	}
 
+	/**
+	 * A method used to hash id and name of the Type
+	 * @return int
+	 */
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, name);
 	}
+
+	/**
+	 * equals method
+	 * @param obj
+	 * @return true if two objects are equal, false otherwise
+	 */
 
 	@Override
 	public boolean equals(Object obj) {

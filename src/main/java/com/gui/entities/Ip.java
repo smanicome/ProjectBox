@@ -10,6 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * <h1>IP entities</h1>
+ * <p>Define IP objects</p>
+ * <p>Class linked to the course database table</p>
+ * <p>An IP objects takes as parameters the ID of the user, an address and a user</p>
+ */
+
 @Entity
 @Table(name = "ip")
 public class Ip {
@@ -27,19 +34,49 @@ public class Ip {
 	/***************************************************************************
 	 |  Getter & Setter
 	***************************************************************************/
+
+	/**
+	 *
+	 * @return
+	 */
 	
 	public int getId() {
 		return id;
 	}
+
+	/**
+	 *
+	 * @return
+	 */
+
 	public String getAddress() {
 		return address;
 	}
+
+	/**
+	 *
+	 * @param address
+	 */
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	/**
+	 *
+	 * @return
+	 */
+
 	public User getUser() {
 		return user;
 	}
+
+	/**
+	 *
+	 *
+	 * @param user
+	 */
+
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -47,15 +84,33 @@ public class Ip {
 	/***************************************************************************
 	 |  Inherited
 	***************************************************************************/
-	
+
+	/**
+	 * ToString method
+	 * @return String with id, address and user of IP object
+	 */
+
 	@Override
 	public String toString() {
 		return "Ip [id=" + id + ", address=" + address + ", user=" + user + "]";
 	}
+
+	/**
+	 * HashCode method
+	 * @return hashed values of the Object parameters
+	 */
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(address, id, user);
 	}
+
+	/**
+	 * Method that compares two objects to see if they are equal
+	 * @param obj
+	 * @return true if the two objects are equal, false otherwise
+	 */
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

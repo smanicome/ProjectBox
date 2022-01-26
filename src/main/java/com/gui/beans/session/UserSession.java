@@ -10,6 +10,11 @@ import javax.inject.Named;
 import com.gui.entities.Type;
 import com.gui.entities.User;
 
+/**
+ * <h1>Handling User Session Bean</h1>
+ * <p>A bean that handles the user's current session</p>
+ * <p>Check its authentication and retrieve its data</p>
+ */
 @Named
 @SessionScoped
 public class UserSession implements Serializable{
@@ -21,16 +26,39 @@ public class UserSession implements Serializable{
 	/***************************************************************************
 	 |  Getter & Setter
 	***************************************************************************/
-	
+
+	/**
+	 * Getter of authentication state
+	 * @return True if user is authentified, false otherwis
+	 */
+
 	public boolean isAuth() {
 		return isAuth;
 	}
+
+	/**
+	 * Setter of authentication state
+	 * @param isAuth = True if user is authentified, false otherwis
+	 */
+
 	public void setAuth(boolean isAuth) {
 		this.isAuth = isAuth;
 	}
+
+	/**
+	 * Getter of the current user
+	 * @return user, User
+	 */
+
 	public User getUser() {
 		return user;
 	}
+
+	/**
+	 * Setter of the current user
+	 * @param user, User
+	 */
+
 	public void setUser(User user) {
 		this.user = user;
 	}
@@ -38,7 +66,11 @@ public class UserSession implements Serializable{
 	/***************************************************************************
 	 |  Business Logic
 	***************************************************************************/
-	
+
+	/**
+	 * Method that redirects the user to a certain page if this one is not authentified
+	 */
+
 	public void checkAuthentification() {
 		System.out.println("check");
 		if ( !this.isAuth ) {
@@ -46,6 +78,12 @@ public class UserSession implements Serializable{
 			doRedirect( "student_list.xhtml" );
 		}
 	}
+
+	/**
+	 * Method that redirects to a given url
+	 * @param url
+	 * @throws IOException if url does not exist
+	 */
 	
 	private void doRedirect( String url ) {
 		FacesContext fc = FacesContext.getCurrentInstance();

@@ -12,21 +12,46 @@ import java.util.StringTokenizer;
 import com.gui.entities.Type;
 import com.gui.entities.User;
 
+/**
+ * <h1>CSV handling</h1>
+ * <p>A class that handles the reading of CSV files</p>
+ */
+
 public class CSV{
 
 	private BufferedReader buffReader;
 	private String separator;
-	
+
+	/**
+	 * Constructor that creates a BufferedReader Object from a InputStream Object and takes a separator sep
+	 * @param in, type Input Stream
+	 * @param sep, type String
+	 */
+
 	public CSV(InputStream in, String sep){
 		this.buffReader = new BufferedReader(new InputStreamReader(in));
 		this.separator = sep;
 	}
+
+
+	/**
+	 * Read a line of the bufferedReader
+	 * @return Optional of line if everything went well
+	 * @throws IOException otherwise
+	 */
 
 	private Optional<String> getline() throws IOException {
 		String line = buffReader.readLine();
 		if (line == null) return Optional.empty();
 		return Optional.of( line );
 	}
+
+	/**
+	 * Splits Strings into parts according to a separator
+	 * @param line
+	 * @param sep
+	 * @return List with all the parts of the line separated according to sep
+	 */
 
 	// split: split line into fields
 	private ArrayList<String> split(String line, String sep){
@@ -39,7 +64,13 @@ public class CSV{
 		}
 		return list;
   	}
-	
+
+	/**
+	 * Creates a list of User from a list of Strings
+	 * @return list of users if everything went well,
+	 * @throws IOException otherwise
+	 */
+
 	public ArrayList<User> getUserList() throws IOException {
 		boolean firstLine = true;
 		ArrayList<User> users = new ArrayList<>();

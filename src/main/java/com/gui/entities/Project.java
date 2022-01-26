@@ -4,6 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
+/**
+ * <h1>Project entity</h1>
+ * <p>Define project objects<p>
+ * <p>Class linked to the project database table</p>
+ * <p>Object course has a name, a description, a deadline, a related course, a project team.</p>
+ */
+
+
 @Entity
 @Table(name = "project")
 @NamedQueries({
@@ -37,9 +45,21 @@ public class Project implements Serializable {
 	 |  Constructor
 	***************************************************************************/
 
+    /**
+     * Empty consctructor
+     */
+
     public Project() {
     }
-    
+
+    /**
+     * Constructor of project
+     * @param name of type String
+     * @param description of type String
+     * @param deadline of type Date
+     * @param course of type Course
+     */
+
     public Project(String name, String description, Date deadline, Course course) {
     	this.name = name;
     	this.description = description;
@@ -55,56 +75,100 @@ public class Project implements Serializable {
 		return id;
 	}
 
+    /**
+     * Getter of project's name
+     * @return name of type String
+     */
+
 	public String getName() {
         return name;
     }
+
+    /**
+     * Setter of project's name
+     * @param name of type String
+     */
 
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Getter of project's Description
+     * @return description of type String
+     */
+
     public String getDescription() {
         return description;
     }
+
+    /**
+     * Setter of project description
+     * @param description of type String
+     */
 
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Getter of project's deadline
+     * @return deadline of type Date
+     */
+
     public Date getDeadline() {
         return deadline;
     }
+
+    /**
+     * Setter of project's deadline
+     * @param deadline of type Date
+     */
 
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
 
+    /**
+     * Getter of project's related course
+     * @return course of type Course
+     */
+
     public Course getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    /*public Course getCourse() {
-        return course;
-    }
+    /**
+     * Setter of project's related course
+     * @param course of type Course
+     */
 
     public void setCourse(Course course) {
         this.course = course;
     }
+
 
     /***************************************************************************
 	 |  Inherited
 	***************************************************************************/
-    
+
+    /**
+     * Method that hashes project's name
+     * @return hash of type int
+     */
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (name != null ? name.hashCode() : 0);
         return hash;
     }
+
+    /**
+     * Method that returns true if two projects are equal, false otherwise
+     * @param object
+     * @return boolean
+     */
 
     @Override
     public boolean equals(Object object) {
@@ -118,6 +182,12 @@ public class Project implements Serializable {
         }
         return true;
     }
+
+    /**
+     * Method that returns the project's name
+     * @return
+     */
+
 
     @Override
     public String toString() {

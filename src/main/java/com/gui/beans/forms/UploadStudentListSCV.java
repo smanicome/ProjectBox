@@ -19,6 +19,11 @@ import com.gui.services.PasswordGenerator;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * <h1>Upload Student List</h1>
+ * <p>class used to upload a list of students to the database and initialize their accounts</p>
+ * <p>The list of students comes from a .csv file</p>
+ */
 @Named
 @RequestScoped
 public class UploadStudentListSCV {
@@ -32,6 +37,10 @@ public class UploadStudentListSCV {
 	@Inject
 	private StudentList studentList;
 
+	/**
+	 * Empty constructor
+	 */
+
 	public UploadStudentListSCV() {
     }
     
@@ -40,15 +49,31 @@ public class UploadStudentListSCV {
     ***************************************************************************/
     
     private Part csvFile;
+
+	/**
+	 * Getter that retrieves CSV file
+	 * @return csv file, type Part
+	 */
     
     public Part getCsvFile() {
 		return csvFile;
 	}
 
+	/**
+	 * Setter of CSV file
+	 * @param csvFile, type part
+	 */
+
 	public void setCsvFile(Part csvFile) {
 		this.csvFile = csvFile;
 	}
-	
+
+
+	/**
+	 * Method that takes csv file, transforms it into users, sets passwords for them, send them by email and adds the user to the list of students.
+	 * @throws IOException if there was a problem while opening the csv file
+	 * @throws MessagingException if there was a problem with the email sending
+	 */
 	public void uploadCSV() {
 		if ( csvFile != null ) {
 			if ( csvFile.getSize() > 0 ) {
